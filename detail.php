@@ -1,3 +1,4 @@
+#Vitoh le bg !
 <?php
   require 'connexion1.php';
 ($id = $_GET['id'] )|| die('No ID');
