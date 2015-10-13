@@ -1,4 +1,4 @@
-#Vitoh le bg !
+#Vitoh le caca !
 <?php
   require 'connexion1.php';
 ($id = $_GET['id'] )|| die('No ID');
