@@ -1,0 +1,131 @@
+#accueil
+{
+  text-align: center;
+}
+.icones 
+{ 
+	background:  #B9CDE5;
+height : 150px;
+width: 200px;
+	
+
+}
+.icones_home a {
+	margin-bottom: 10px;
+  margin-left: 20px;
+  padding-bottom: 10px;
+  padding-top: 50px;
+line-height: 75px;
+}
+
+.icones img {
+
+	height :70px;
+
+ 
+}
+/* Rectangle Out */
+.red {
+
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  dox-shadow: 0 0 1px rgba(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  background: red;/*#e1e1e1*/
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.red:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #A3E556;/* #2098d1*/
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.red:hover, .red:focus, .red:active {
+  color: white;
+}
+.red:hover:before, .red:focus:before, .red:active:before {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+ fieldset {
+    display: inline-block;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border:  4px groove;
+     border-color:#A3E556;
+} 
+
+.icone {
+	
+	height: 150px;
+	width : 150px;	
+	background-position: center;
+	transition-property: background-size;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+display: inline-table;
+background-repeat: no-repeat;
+text-align: center;
+}
+
+.icone:hover{
+background-size: 90%;
+
+
+}
+
+.cuisine {
+background:url(images/casserole.png);
+background-size: 70%;
+}
+
+
+
+.chambre {
+	background-image: url(images/chambre.png);
+	background-size: 55%;
+	}
+
+.chambre:hover {
+background-size: 70%;
+}
+
+.cuisine_defaut {
+	background:url(images/casserole_defaut.png);
+	background-size: 78%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.home
+{
+	background:url(images/home.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 70%;
+}

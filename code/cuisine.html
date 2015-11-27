@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edison Ways</title>
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+
+	<link href="jquery-ui.css" rel="stylesheet">
+	<link href="icones-salles.css" rel="stylesheet">
+	<link href="hover.css" rel="stylesheet">
+	<script src="external/jquery/jquery.js"></script>
+
+	<script src="jquery.menu-aim.js"></script>
+<script src="main.js"></script> <!-- Resource jQuery -->
+<script src="jquery-ui.js"></script>
+
+<link rel="stylesheet" href="reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+/* Attach the Toggle Switch CSS file */
+<link rel="stylesheet" type="text/css" href="tinytools.css">
+
+/* Then attach the Toggle SWitch plugin */
+<script src="tinytools.js"></script>
+
+
+	<style>
+	
+	
+	
+	</style>
+	</head>
+<body>
+	<header class="cd-main-header">
+
+		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+		
+
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			
+			<ul class="cd-top-nav">
+				
+				<li><a href="#0">Thomas le Baron</a></li>
+				
+				<li class="has-children account">
+					<a href="#0">
+						<img src="images/bg.png" alt="Notifications">
+						Compte
+					</a>
+<ul>
+
+						<li><a href="#0">Mon compte</a></li>
+						
+						<li><a href="#0">Se déconnecter</a></li>
+					</ul>
+				
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Compte utlisateur</li>
+				<li class="has-children users">
+					<a href="#0">Gestion des charges</a>
+					
+				</li>
+				<li class="has-children bookmarks">
+					<a href="#0">Historiques des alertes</a>
+</li>
+					<li class="has-children overview">
+					<a href="#0">Statistiques</a>
+			</li>	
+		</nav>
+<div class="content-wrapper">
+	<br>
+	<a href="cuisine.html" class="hvr-rectangle-out"><img src="images/home.png" style="height:100px;width:100px;"></a>
+			<a href="cuisine.html" class="hvr-rectangle-out"><img src="images/icone_casserole.png" style="height:100px;width:100px;"></a>
+<br><br>
+
+
+
+<div id="accordion">
+  <h3>Liste des charges</h3>
+  <div>
+    <p>Mettre ici la liste des charges
+    </p><br><a href="frigo.html" class="red"><img src="images/frigo.png" style="height:100px;width:100px;"></a>
+  </div>
+  <h3>Visualisation de la pièce</h3>
+  <div>
+    <p>Canevas 2D?????</p><br>Refrigerateur <input type="checkbox" id="ToggleSwitchSample" />
+  </div>
+  <h3>Consommation électrique</h3>
+  <div>
+    <p>Graphique animé <br> +++ <br> historique</p><br>
+   <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Hebmomadaire</a></li>
+		<li><a href="#tabs-2">Mensuelle</a></li>
+		<li><a href="#tabs-3">Annuelle</a></li>
+	</ul>
+	<div id="tabs-1"> la consommation sur une journée pour les 7 jours précédents : affichée sous forme de courbe pour une journée avec des points toutes les 15 minutes</div>
+	<div id="tabs-2">-          la consommation sur 1 semaine pour les 12 derniers mois : affichée sous forme d’histogramme pour une semaine avec une barre par jour de la semaine,</div>
+	<div id="tabs-3">la consommation sur 1 année depuis le début d’enregistrement : affichée sous forme d’histogramme pour 1 année avec une barre par mois</div>
+</div>
+  </div></div>
+	
+
+	</body>
+	<script type='text/javascript'>
+	
+$( "#tabs" ).tabs();
+
+$(function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content"
+    });
+    
+  });
+$(document).ready(function () {
+		$("#ToggleSwitchSample").toggleSwitch();
+	});
+ </script> 
+</html>
