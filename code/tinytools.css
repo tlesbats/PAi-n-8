@@ -61,7 +61,7 @@
 
 		.TinyTools.ToggleSwitch .NubWrapper .OffSide {
 			left: 0;
-			background: red;
+			background: #555;
 		/*	background: -moz-linear-gradient(top, #666 0%, #999 100%); /* FF3.6+ */
 		/*	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666), color-stop(100%,#999)); /* Chrome,Safari4+ */
 		/*	background: -webkit-linear-gradient(top, #666 0%,#999 100%); /* Chrome10+,Safari5.1+ */

@@ -7,9 +7,12 @@
 	background:  #B9CDE5;
 height : 150px;
 width: 200px;
-	
+	}
 
-}
+  select {
+    width: 200px;
+  }
+
 .icones_home a {
 	margin-bottom: 10px;
   margin-left: 20px;
