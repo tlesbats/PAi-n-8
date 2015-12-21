@@ -2,27 +2,22 @@
 
 class Iv
 {
-  private $_idIv
-  private $_nameIv
+  private $_idIv;
+  private $_nameIv;
 
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)
     {
-
       $method = 'set'.ucfirst($key);
 
       if (method_exists($this, $method))
-      {
-
         $this->$method($value);
-      }
     }
   }
 
   public function id()
   {
-
     return $this->_id;
   }
   public function nameIv()
@@ -85,7 +80,7 @@ class managerIv
 
   public function update(Iv $iv)
   {
-    $q = $this->_db->prepare('UPDATE Iv SET   nameIv=:nameIv, WHERE id = :id');
+    $q = $this->_db->prepare('UPDATE Iv SET nameIv = :nameIv WHERE id = :id');
 
     $q->bindValue(':id', $ip->id(), PDO::PARAM_INT);
     $q->bindValue(':nameIv', $iv->nameIv(), PDO::PARAM_INT);
