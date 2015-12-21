@@ -77,3 +77,58 @@ class Objet
       $this->_icone = $icone;
   }
 }
+
+class ObjetManager
+{
+    private $_db;
+
+
+    public function __construct($db)
+    {
+        $this->_db=$db;
+    }
+
+    public function add(Objet $objet)
+    {
+        $q = $this->_db->prepare('INSERT INTO objet SET nameObject =:name, localisation=:localisation, etatBug=:bug, etatEffectif=:etat, consommation=:consommation, icone=:icone');
+
+        $q->bindValue(':name', $objet->getName());
+        $q->bindValue(':localisation', $objet->getLocalisation(),PDO::PARAM_INT);
+        $q->bindValue(':bug',$objet->getEtatBug());
+        $q->bindValue(':etat',$objet->getEtatEffectif());
+        $q->bindValue(':consommation',$objet->getConsommation());
+        $q->bindValue(':icone',$objet->getIcone());
+
+        $q->execute();
+    }
+
+    public function delete(Objet $objet)
+    {
+        $this->_db->exec('DELETE FROM objet WHERE id='.$objet->getId());
+    }
+
+    public function get($id)
+    {
+        $id = (int) $id;
+
+        $q = $this->_db->query('SELECT * FROM objet WHERE id = '.$id);
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+
+        return new Objet($donnees);
+    }
+
+    public function update(Objet $objet)
+    {
+        $q=$this->_db->prepare('UPDATE objet SET nameObject =:name, localisation=:localisation, etatBug=:bug, etatEffectif=:etat, consommation=:consommation, icone=:icone WHERE id = :id');
+
+        $q->bindValue(':id', $objet->getId());
+        $q->bindValue(':name', $objet->getName());
+        $q->bindValue(':localisation', $objet->getLocalisation(),PDO::PARAM_INT);
+        $q->bindValue(':bug',$objet->getEtatBug());
+        $q->bindValue(':etat',$objet->getEtatEffectif());
+        $q->bindValue(':consommation',$objet->getConsommation());
+        $q->bindValue(':icone',$objet->getIcone());
+
+        $q->execute();
+    }
+}

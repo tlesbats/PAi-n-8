@@ -3,7 +3,7 @@ class Pilotage_iv_charge extends Pilotage_ip_objet
 {
 	private $_idIv;
 
-	public function getIdIv()				{return $this->_idIv;}
+	public function getIdIv() {return $this->_idIv;}
 	public function setIdIv()
 	{
 	$idIv = (int) $idIv;
@@ -37,7 +37,7 @@ class Pilotage_iv_chargeManager
 
     public function delete(Pilotage_iv_charge $pilotage_iv_charge)
     {
-        $this->_db->exec('DELETE FROM pilotage_iv_charge WHERE id='.$pilotage_iv_charge->id());
+        $this->_db->exec('DELETE FROM pilotage_iv_charge WHERE id='.$pilotage_iv_charge->getId());
     }
 
     public function get($id)
@@ -47,7 +47,7 @@ class Pilotage_iv_chargeManager
         $q = $this->_db->query('SELECT * FROM pilotage_iv_charge WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
-        return new pilotage_iv_charge($donnees);
+        return new Pilotage_iv_charge($donnees);
     }
 
     public function update(Pilotage_iv_charge $pilotage_iv_charge)

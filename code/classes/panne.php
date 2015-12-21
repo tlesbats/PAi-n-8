@@ -1,5 +1,5 @@
 <?php
-class Panne{
+class Panne extends Rapport{
 	private $_name;
 	private $_description;
 	private $_priorite;
@@ -61,9 +61,9 @@ class PanneManager
 
     public function add(Panne $panne)
     {
-        $q = $this->_db->prepare('INSERT INTO panne SET namePanne=:name, description=:descrition, priorite=:priorite, date=:date, idCompte=:idCompte');
+        $q = $this->_db->prepare('INSERT INTO panne SET id=:id, namePanne=:name, description=:descrition, priorite=:priorite, date=:date, idCompte=:idCompte');
 
-
+		$q->bindValue(':id',$panne->getId());
         $q->bindValue(':name', $panne->getName());
 		$q->bindValue(':description', $panne->getDescription());
 		$q->bindValue(':priorite', $panne->getPriorite(), PDO::PARAM_INT);
@@ -75,7 +75,7 @@ class PanneManager
 
     public function delete(Panne $panne)
     {
-        $this->_db->exec('DELETE FROM panne WHERE id='.$panne->id());
+        $this->_db->exec('DELETE FROM panne WHERE id='.$panne->getId());
     }
 
     public function get($id)

@@ -1,8 +1,7 @@
 <?php
 
-class Consommation
+class Consommation extends Rapport
 {
-  private $_id;
   private $_consommation;
 
   public function hydrate(array $donnee)
@@ -19,10 +18,10 @@ class Consommation
   }
 
   public function id() {return $this->_id;}
-  public function concommation() {return $this->_consommation;}
+  public function consommation() {return $this->_consommation;}
 
   public function setId($id) {$this->_id=(int) $id;}
-  public function setConcommation($consommation)
+  public function setConsommation($consommation)
   {
       if (is_double($consommation)) {$this->_consommation = $consommation;}
   }
@@ -30,7 +29,7 @@ class Consommation
 }
 
 
-class managerConsommation
+class ConsommationManager
   {
     private $_db;
 
@@ -41,8 +40,9 @@ class managerConsommation
 
     public function add(Consommation $consommation)
     {
-        $q = $this->_db->prepare('INSERT INTO consommation SET consommation:=consommation');
+        $q = $this->_db->prepare('INSERT INTO consommation SET id=:id, consommation:=consommation');
 
+        $q->bindValue(':id',$consommation->id());
         $q->bindValue(':consommation', $consommation->consommation());
 
         $q->execute();

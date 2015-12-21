@@ -1,8 +1,7 @@
 <?php
 
-class Alerte
+class Alerte extends Rapport
 {
-    private $_id;
     private $_name;
     private $_description;
     private $_priorite;
@@ -58,9 +57,9 @@ class AlerteManager
 
     public function add(Alerte $alerte)
     {
-        $q = $this->_db->prepare('INSERT INTO alerte SET nameAlerte = :alerte, description = :description, priorite = :priorite');
+        $q = $this->_db->prepare('INSERT INTO alerte SET id=:id, nameAlerte = :alerte, description = :description, priorite = :priorite');
 
-
+        $q->bindValue(':id',$alerte->id()PDO,PARAM_INT);
         $q->bindValue(':alerte', $alerte->name());
         $q->bindValue(':description', $alerte->description());
         $q->bindValue(':priorite', $alerte->priorite(), PDO::PARAM_INT);
@@ -93,5 +92,6 @@ class AlerteManager
         $q->bindValue(':priorite', $alerte->priorite(), PDO::PARAM_INT);
 
         $q->execute();
+
     }
 }

@@ -23,7 +23,7 @@ class Source extends Objet
   }
 }
 
-class SourceManager
+class SourceManager extends ObjetManager
 {
   private $_db;
 

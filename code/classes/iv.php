@@ -2,8 +2,9 @@
 
 class Iv
 {
-  private $_idIv
-  private $_nameIv
+  private $_id;
+  private $_nameIv;
+  private $_pilotable;
 
   public function hydrate(array $donnees)
   {
@@ -20,21 +21,13 @@ class Iv
     }
   }
 
-  public function id()
-  {
-
-    return $this->_id;
-  }
-  public function nameIv()
-  {
-    return $this->_nameIv;
-  }
-
+  public function id() {return $this->_id;}
+  public function nameIv(){return $this->_nameIv;}
+  public function pilotable() {return $this->_pilotable}
 
   public function setId($id)
   {
-
-    $this->_id =(int) $id
+    if (is_int($id)){$this->_id =$id}
   }
   public function setName($name)
   {
@@ -43,12 +36,16 @@ class Iv
       $this->_nameIv = $name;
     }
   }
+  public function setId($pilotable)
+  {
+    if (is_int($pilotable)){$this->_pilotable =$pilotable}
+  }
 
 }
 
 
 
-class managerIv
+class IvManager
 {
   private $_db;
 
@@ -59,10 +56,10 @@ class managerIv
 
   public function add(Iv $ip)
   {
-    $q = $this->_db->prepare('INSERT INTO iv SET nameIp=:nameIp');
+    $q = $this->_db->prepare('INSERT INTO iv SET nameIp=:nameIp, pilotable=:pilotable');
 
-    $q->bindValue(':nameIp', $ip->nameIp());
-    $q->bindValue('localisation', $ip->localisation(), PDO::PARAM_INT);
+    $q->bindValue(':nameIp', $iv->nameIp());
+    $q->bindValue('pilotable', $iv->pilotable(), PDO::PARAM_INT);
 
     $q->execute();
   }
@@ -85,12 +82,12 @@ class managerIv
 
   public function update(Iv $iv)
   {
-    $q = $this->_db->prepare('UPDATE Iv SET   nameIv=:nameIv, WHERE id = :id');
+    $q = $this->_db->prepare('UPDATE Iv SET nameIv=:nameIv, pilotable=:pilotable WHERE id = :id');
 
-    $q->bindValue(':id', $ip->id(), PDO::PARAM_INT);
-    $q->bindValue(':nameIv', $iv->nameIv(), PDO::PARAM_INT);
+    $q->bindValue(':id', $iv->id(), PDO::PARAM_INT);
+    $q->bindValue(':nameIv', $iv->nameIv());
+    $q->bindValue('pilotable', $iv->pilotable(), PDO::PARAM_INT);
 
     $q->execute();
   }
 }
-?>

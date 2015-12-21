@@ -1,6 +1,6 @@
 <?php
 
-class Batterie
+class Batterie extends Source
 {
   private $_stockage;
 
@@ -36,7 +36,7 @@ class managerBatterie
 
     public function add(Batterie $batterie)
     {
-        $q = $this->_db->prepare('INSERT INTO batterie SET B_IDSource=:id, stockage=:stockage');
+        $q = $this->_db->prepare('INSERT INTO batterie SET id=:id, stockage=:stockage');
 
         $q->bindValue(':id',$batterie->id(),PDO::PARAM_INT)
         $q->bindValue(':stockage', $batterie->stockage());
