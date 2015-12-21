@@ -1,4 +1,11 @@
-class Sboitier
+<?php
+
+class Sboitier extends Objet
 {
-  private $_idBoitier
+
+}
+
+class SboitierManager extends ObjetManager
+{
+
 }

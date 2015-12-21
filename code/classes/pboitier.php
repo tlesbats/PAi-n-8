@@ -1,4 +1,8 @@
-class Pboitier
+<?php
+class Pboitier extends Objet{
+
+}
+class PanneManager
 {
-  private $_idObjet
+	
 }
