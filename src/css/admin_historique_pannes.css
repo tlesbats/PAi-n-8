@@ -1,0 +1,66 @@
+#hist_alerte
+{
+    border-collapse: collapse;
+    margin : auto;
+    width: 70%;
+
+}
+
+
+#hist_alerte td
+{
+    border: 2px solid black;
+    
+}
+
+
+
+#hist_alerte th
+{
+    font-size: 1.2em;
+}
+
+#hist_alerte td
+{
+    text-align: center; 
+ 
+}
+
+#bcharge, #bsalle, #bnom, #bpriorite, #bdate, #breparateur, #bdetails
+{
+      font-size:0.8em;
+
+}
+
+#dialog 
+{
+    text-align: center;
+}
+
+
+.dial_ligne_1
+
+{
+    margin-top:25px;
+    width: 32%;
+    text-align: center;
+    display:inline-block;
+}
+
+strong
+{
+    font-style: bold;
+}
+
+#dial_nom
+{
+    margin-top: 15px;
+    text-align:center;
+}
+
+#dial_desc
+{
+    margin-top:25px;
+    text-align: justify;
+}
+

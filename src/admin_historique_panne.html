@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+    
+<head>
+    
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Historique des pannes </title>
+	<link rel="icon" type="image/png" href="images/favicon.png" /> <!-- le rel="icon" permet au navigateur de comprendre que c'est la favicone -->
+
+	<link href="css/jquery-ui.css" rel="stylesheet">
+	<link href="css/icones-salles.css" rel="stylesheet">
+	<link href="css/hover.css" rel="stylesheet">
+    <link href="css/admin_historique_pannes.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tinytools.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+    <script src="js/main.js"></script> <!-- Resource jQuery -->
+    <script src="js/jquery-ui.js"></script>
+	<script src="js/modernizr.js"></script>
+    <script src="js/tinytools.js"></script>
+    <script src="js/graphs.js"></script>
+    <script src="js/slick.js"></script>
+    <script src="js/slick_menu.js"></script> 
+    
+    
+    
+    <style>
+	</style>
+	</head>
+<body>
+	<header class="cd-main-header">
+
+		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+		
+
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			
+			<ul class="cd-top-nav">
+				
+				<li><a href="#0">Thomas le Baron</a></li>
+				
+				<li class="has-children account">
+					<a href="#0">
+						<img src="images/bg.png" alt="Notifications">
+						Compte
+					</a>
+<ul>
+
+						<li><a href="#0">Mon compte</a></li>
+						
+						<li><a href="#0">Se déconnecter</a></li>
+					</ul>
+				
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+    
+    
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Compte utlisateur</li>
+				<li class="has-children users">
+					<a href="#0">Pilotage</a>
+					
+				</li>
+				<li class="has-children bookmarks">
+					<a href="#0">Consommation</a>
+</li>
+					<li class="has-children overview">
+					<a href="#0">Alertes</a>
+			</li>	
+		</nav>
+<div class="content-wrapper">
+	<br>
+<h2>Responsive Display</h2>
+				<div class="menu_salles icones-salles">
+					<div><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><img src="images/danger.png" style="position: absolute;top:-30px;right:-1px;height:40px;"><br><span>Cuisine</span></a></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cuisine</span></a></h3></div>
+				</div>
+
+</div>
+
+  <table id="hist_alerte"> 
+     <tr class="ui-widget-header ">
+        
+    <th> Charge </th>
+    <th> Salle  </th>
+    <th> Nom </th>
+    <th> Priorité</th>
+    <th> Date </th>
+    <th> Réparateur </th>
+    <th> Détails </th>
+    </tr>
+    
+    <tr>
+    <td> Frigidaire </td>
+    <td> Cuisine </td>
+    <td> Court-Circuit </td>
+    <td> 1 </td>
+    <td> 12/04/2015 </td>
+    <td> Roger </td>
+    <td> <button id="opener"> + </button> </td>
+    </tr>
+    
+    </table>
+            
+<div id="dialog" title="Informations pannes">
+                    
+<div id=dial_nom> <p> <strong>Court Circuit</strong> </p> </div>
+
+<div id=dial_salle class=dial_ligne_1> <p>Salle </br> Cuisine</p>  </div>
+<div id=dial_priorite class=dial_ligne_1>  <p>Priorité </br> 1 </p> </div>
+<div id=dial_date class=dial_ligne_1>  <p> Date </br> 12/04/2015</p></div>
+
+<div id=dial_desc> <p> Un court circuit a été reperé dans le circuit électrique du frigidaire. Vous devez absolument appeller le réparateur pour pouvoir utiliser de nouveau cette charge.   </p> </div>
+        
+</div>
+
+
+<script>  
+    
+  $(function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).click(function()
+ {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+    
+    
+    
+$( "#opener" ).button();
+    
+</script>
+            
+	</body>
+	<script type='text/javascript'>
+$('.menu_salles').slick({
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        height: 600,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
+    });
+ </script> 
+</html>
