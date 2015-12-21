@@ -15,8 +15,11 @@ if (isset($_POST['username']) && isset($_POST['password']))
 	{
 		$compte = new Compte();
 		$compte->hydrate($request->fetch());
+
 		session_start();
+		$_SESSION['username'] = $compte->username();
 		$_SESSION['id'] = $compte->id();
+
 		switch($compte->type())
 		{
 			case 1: //utilisateur Normal
