@@ -7,6 +7,11 @@ class Compte
   private $_password;
   private $_type;
 
+  public function __construc($donnees)
+  {
+    $this->hydrate($donnees);
+  }
+
   public function hydrate(array $donnee)
   {
       foreach ($donnees as $key => $value)
@@ -42,7 +47,7 @@ class Compte
 
 //<-------------- fin de la journée dimanche 20/12------------------------->
 
-class managerCompte
+class CompteManager
   {
     private $_db;
 

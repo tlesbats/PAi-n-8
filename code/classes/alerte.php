@@ -6,20 +6,6 @@ class Alerte extends Rapport
     private $_description;
     private $_priorite;
 
-    public function hydrate(array $donnee)
-    {
-        foreach ($donnees as $key => $value)
-        {
-          $method = 'set'.ucfirst($key);
-
-          if (method_exists($this, $method))
-          {
-            $this->$method($value);
-          }
-        }
-    }
-
-
     public function id() {return $this->_id;}
     public function name() {return $this->_name;}
     public function description() {return $this->_description;}

@@ -10,6 +10,11 @@ class Objet
   private $_consommation;
   private $_icone;
 
+	public function __construc($donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)

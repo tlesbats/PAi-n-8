@@ -58,7 +58,7 @@ class Charge extends Objet
 }
 
 
-  class managerCable
+  class ChargeManager
   {
     private $_db;
 

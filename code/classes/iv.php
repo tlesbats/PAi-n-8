@@ -6,6 +6,11 @@ class Iv
   private $_nameIv;
   private $_pilotable;
 
+	public function __construc($donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)

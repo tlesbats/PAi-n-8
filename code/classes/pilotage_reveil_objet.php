@@ -7,6 +7,11 @@ class Pilotage_reveil_objet
   private $_idObjet
   private $_idGroupe
 
+  public function __construc($donnees)
+  {
+	$this->hydrate($donnees);
+  }
+
 	public function hydrate(array $donnees)
 	{
 		foreach ($donnees as $key => $value)
@@ -104,9 +109,12 @@ class Pilotage_reveil_objetManager
 		$request = $this->_db->prepare('SELECT * FROM pilotage_reveil_objet WHERE id = :id');
 
 		$request->bindValue(':id', $id, PDO::PARAM_INT);
-        $request->closeCursor();
-
 		$request->execute();
+
+    	$donnees = $request->fetch(PDO::FETCH_ASSOC);
+    	$request->closeCursor();
+
+    	return new Pilotage_reveil_objet($donnees);
 	}
 
 	public function getList()
