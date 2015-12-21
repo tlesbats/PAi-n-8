@@ -2178,7 +2178,7 @@
   /* Hack to improve aliasing on mobile/tablet devices */
 }
 .hvr-border-fade:hover, .hvr-border-fade:focus, .hvr-border-fade:active {
-  box-shadow: inset 0 0 0 14px #B9CDE5, 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0 14px white, 0 0 1px rgba(0, 0, 0, 0);
   /* Hack to improve aliasing on mobile/tablet devices */
 }
 
