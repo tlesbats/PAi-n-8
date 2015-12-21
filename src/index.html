@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edison Ways</title>
+
+	<link rel="stylesheet" href="css/jquery-ui.css" >
+	<link rel="stylesheet" href="css/perso.css" >
+	<link rel="stylesheet" href="css/hover.css" >
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Ressource style -->
+	<link rel="stylesheet" href="css/interrupteur.css">
+	<link rel="stylesheet" href="css/slick.css">
+	<link rel="stylesheet" href="css/slick-theme.css">
+
+	<script src="js/jquery.js"></script>
+	<script src="js/fonctions_menu.js"></script>
+	<script src="js/main.js"></script> 
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.menu-aim.js"></script> <!-- Modernizr -->
+	<script src="js/interrupteur.js"></script>
+	<script src="js/graphs.js"></script>
+	
+</head>
+<body>
+	
+ <div id='accueil'>
+<br/>
+		Bienvenue sur l'intranet du réseau intelligent<strong> Edison Ways</strong>.
+		<br/>
+		Veuillez vous identifiez
+		<br/>
+		<br/>
+		<a href="http://www.edisonways.com"><img src="images/ew.png" class="logo"/></a>
+
+
+		<br/><br/>
+<form method="POST" action="accueil.html">
+					<fieldset>
+						<legend>&nbspConnexion&nbsp</legend>
+							<label for="pseudo">Identifiant</label><br /><input type ="text" name="user" id="email" /><br /><br/>
+							<label for="mdp">Mot de passe</label><br /><input type="password" name="mdp" id="mdp" /><br/><br/>
+							<input type="submit" value="Valider" id="button" /><br />
+
+
+							</fieldset>					
+				</form>
+				<script>
+
+				$( "#button" ).button();
+				</script>
