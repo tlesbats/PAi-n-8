@@ -36,7 +36,7 @@ class Groupe
 }
 
 
-class managerGroupe
+class GroupeManager
   {
     private $_db;
 
@@ -79,5 +79,19 @@ class managerGroupe
         $q->bindValue(':id',$constitution_groupe->id(), PDO::PARAM_INT);
 
         $q->execute();
+    }
+
+    public function getList()
+    {
+      $groupes = [];
+
+      $request = $this->_db->query('SELECT * FROM groupe');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+      {
+        $groupes[] = new Groupe($donnees);
+      }
+
+      return $groupes;
     }
 }

@@ -42,7 +42,7 @@ class Compte
 
 //<-------------- fin de la journée dimanche 20/12------------------------->
 
-class managerCompte
+class CompteManager
   {
     private $_db;
 
