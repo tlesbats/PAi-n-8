@@ -34,7 +34,7 @@ class SourceManager
 
   public function add(Source $source)
   {
-    $request = $this->_bd->prepapre('INSERT INTO source(id, prix) VALUES (:id, :prix)');
+    $request = $this->_bd->prepare('INSERT INTO source(id, prix) VALUES (:id, :prix)');
 
     $request->bindValue(':id', $source->getId(), PDO::PARAM_INT);
     $request->bindValue(':prix', $source->getPrix(), PDO::PARAM_STR);
@@ -53,7 +53,7 @@ class SourceManager
 
   public function update(Source $source)
   {
-    $request = $this->_db->prepapre('UPDATE source SET prix = :prix WHERE id = :id');
+    $request = $this->_db->prepare('UPDATE source SET prix = :prix WHERE id = :id');
 
     $request->bindValue(':prix', $source->getPrix(), PDO::PARAM_STR);
     $request->bindValue(':id', $source->getId(), PDO::PARAM_INT);

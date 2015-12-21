@@ -18,7 +18,7 @@ class Pilotage_reveil_objet
 		}
 	}
 
-	public function getId()					{return $this->_id;}
+	public function getId()				{return $this->_id;}
 	public function getIdReveil()		{return $this->_idReveil;}
 	public function getIdObjet()		{return $this->_idObjet;}
 	public function getIdGroupe()		{return $this->_idGroupe;}
