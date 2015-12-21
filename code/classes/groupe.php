@@ -36,7 +36,7 @@ class Groupe
 }
 
 
-class GroupeManager
+class managerGroupe
   {
     private $_db;
 
@@ -66,6 +66,7 @@ class GroupeManager
 
         $q = $this->_db->query('SELECT * FROM groupe WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q->closeCursor();
 
         return new Groupe($donnees);
     }
@@ -83,15 +84,16 @@ class GroupeManager
 
     public function getList()
     {
-      $groupes = [];
+      $rapports = [];
 
       $request = $this->_db->query('SELECT * FROM groupe');
 
       while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
       {
-        $groupes[] = new Groupe($donnees);
+        $rapports[] = new Groupe($donnees);
       }
+      $request->closeCursor();
 
-      return $groupes;
+      return $rapports;
     }
 }

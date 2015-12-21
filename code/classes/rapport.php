@@ -147,6 +147,7 @@ class RapportManager
     $request = $this->_db->prepare('SELECT * FROM rapport WHERE id = :id');
 
     $request->bindValue(':id', $id, PDO::PARAM_INT);
+    $request->closeCursor();
 
     $request->execute();
   }

@@ -42,7 +42,7 @@ class Compte
 
 //<-------------- fin de la journée dimanche 20/12------------------------->
 
-class CompteManager
+class managerCompte
   {
     private $_db;
 
@@ -75,6 +75,7 @@ class CompteManager
 
         $q = $this->_db->query('SELECT * FROM compte WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q->closeCursor();
 
         return new compte($donnees);
     }
@@ -89,5 +90,20 @@ class CompteManager
         $q->bindValue(':type', $compte->type());
 
         $q->execute();
+    }
+
+    public function getList()
+    {
+      $rapports = [];
+
+      $request = $this->_db->query('SELECT * FROM compte');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+      {
+        $rapports[] = new Compte($donnees);
+      }
+      $request->closeCursor();
+
+      return $rapports;
     }
 }

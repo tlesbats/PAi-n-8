@@ -86,6 +86,7 @@ class managerCable
 
         $q = $this->_db->query('SELECT * FROM cable WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q->closeCursor();
 
         return new Cable($donnees);
     }
@@ -101,5 +102,20 @@ class managerCable
         $q->bindValue(':icone',$cable->icone());
 
         $q->execute();
+    }
+
+    public function getList()
+    {
+      $rapports = [];
+
+      $request = $this->_db->query('SELECT * FROM cable');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+      {
+        $rapports[] = new Cable($donnees);
+      }
+      $request->closeCursor();
+
+      return $rapports;
     }
 }

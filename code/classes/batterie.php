@@ -1,6 +1,6 @@
 <?php
 
-class Batterie
+class Batterie extends Source
 {
   private $_stockage;
 
@@ -36,7 +36,7 @@ class managerBatterie
 
     public function add(Batterie $batterie)
     {
-        $q = $this->_db->prepare('INSERT INTO batterie SET B_IDSource=:id, stockage=:stockage');
+        $q = $this->_db->prepare('INSERT INTO batterie SET id=:id, stockage=:stockage');
 
         $q->bindValue(':id',$batterie->id(),PDO::PARAM_INT)
         $q->bindValue(':stockage', $batterie->stockage());
@@ -55,6 +55,7 @@ class managerBatterie
 
         $q = $this->_db->query('SELECT * FROM batterie WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q->closeCursor();
 
         return new Batterie($donnees);
     }
@@ -67,5 +68,20 @@ class managerBatterie
         $q->bindValue(':stockage',$batterie->stockage());
 
         $q->execute();
+    }
+
+    public function getList()
+    {
+      $rapports = [];
+
+      $request = $this->_db->query('SELECT * FROM batterie');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+      {
+        $rapports[] = new Batterie($donnees);
+      }
+      $request->closeCursor();
+
+      return $rapports;
     }
 }

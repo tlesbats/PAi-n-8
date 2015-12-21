@@ -5,19 +5,19 @@ class Ip
   private $_id;
   private $_nameIp;
   private $_localisation;
-  
-  
-  
+
+
+
   public function hydrate(array $donnees)
 {
   foreach ($donnees as $key => $value)
   {
-    
+
     $method = 'set'.ucfirst($key);
-     
+
     if (method_exists($this, $method))
     {
-      
+
       $this->$method($value);
     }
   }
@@ -25,7 +25,7 @@ class Ip
 
    public function id()
   {
-	 
+
       return $this->_id;
   }
  public function nameIp()
@@ -36,13 +36,13 @@ class Ip
   {
      return $this->_localisation;
   }
-  
-  
-  
-  
+
+
+
+
   public function setId($id)
   {
-	
+
       $this->_id =(int) $id
   }
   public function setName($name)
@@ -54,8 +54,8 @@ class Ip
   }
   public function setLocalisation($localisation)
   {
-	  if (is_int($localisation)) 
-            
+	  if (is_int($localisation))
+
     if ($localisation>= 0 && $localisation<= 99)
     {
       $this->_localisation = $localisation;
@@ -64,9 +64,9 @@ class Ip
 
 
 
-class managerIp
+class IpManager
 {
-  private $_db; 
+  private $_db;
 
   public function __construct($db)
   {
@@ -78,8 +78,8 @@ class managerIp
     $q = $this->_db->prepare('INSERT INTO ip SET nameIp=:nameIp, localisation=:localisation');
 
     $q->bindValue(':nameIp', $ip->nameIp());
-    $q->bindValue('localisation', $ip->localisation(), PDO::PARAM_INT);
-    
+    $q->bindValue(':localisation', $ip->localisation(), PDO::PARAM_INT);
+
     $q->execute();
   }
 
@@ -94,6 +94,7 @@ class managerIp
 
     $q = $this->_db->query('SELECT * FROM ip WHERE id = '.$id);
     $donnees = $q->fetch(PDO::FETCH_ASSOC);
+    $q->closeCursor();
 
     return new Ip($donnees);
   }
@@ -104,10 +105,24 @@ class managerIp
     $q = $this->_db->prepare('UPDATE Ip SET   nameIp=:nameIp, localisation=:localisation  WHERE id = :id');
 
     $q->bindValue(':id', $ip->id(), PDO::PARAM_INT);
-    $q->bindValue(':nameIp', $ip->nameIp(), PDO::PARAM_INT);
+    $q->bindValue(':nameIp', $ip->nameIp());
     $q->bindValue(':localisation', $ip->localisation(), PDO::PARAM_INT);
 
     $q->execute();
   }
+
+  public function getList()
+  {
+    $rapports = [];
+
+    $request = $this->_db->query('SELECT * FROM ip');
+
+    while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+    {
+      $rapports[] = new Ip($donnees);
+    }
+    $request->closeCursor();
+
+    return $rapports;
+  }
 }
-?>

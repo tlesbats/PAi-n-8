@@ -111,6 +111,7 @@ class ReveilManager
     $request = $this->_bd->prepare('SELECT * FROM reveil WHERE id = :id');
 
     $request->bindValue(':id', $id, PDO::PARAM_INT);
+    $request->closeCursor();
 
     $request->execute();
   }

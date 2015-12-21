@@ -23,7 +23,7 @@ class Source extends Objet
   }
 }
 
-class SourceManager
+class SourceManager extends ObjetManager
 {
   private $_db;
 
@@ -66,6 +66,7 @@ class SourceManager
     $request = $this->_db->prepare('SELECT * FROM source WHERE id = :id');
 
     $request->bindValue(':id', $id, PDO::PARAM_INT);
+    $request->closeCursor();
 
     $request->execute();
   }

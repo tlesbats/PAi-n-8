@@ -104,6 +104,7 @@ class Pilotage_reveil_objetManager
 		$request = $this->_db->prepare('SELECT * FROM pilotage_reveil_objet WHERE id = :id');
 
 		$request->bindValue(':id', $id, PDO::PARAM_INT);
+        $request->closeCursor();
 
 		$request->execute();
 	}

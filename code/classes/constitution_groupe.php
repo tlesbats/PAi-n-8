@@ -66,6 +66,7 @@ class managerConstitution_groupe
 
         $q = $this->_db->query('SELECT * FROM constitution_groupe WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q->closeCursor();
 
         return new Consommation($donnees);
     }
@@ -79,5 +80,20 @@ class managerConstitution_groupe
         $q->bindValue(':id',$constitution_groupe->id(), PDO::PARAM_INT);
 
         $q->execute();
+    }
+
+    public function getList()
+    {
+      $rapports = [];
+
+      $request = $this->_db->query('SELECT * FROM constitution_groupe');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+      {
+        $rapports[] = new Constitution_groupe($donnees);
+      }
+      $request->closeCursor();
+
+      return $rapports;
     }
 }

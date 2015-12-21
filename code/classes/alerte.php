@@ -1,8 +1,7 @@
 <?php
 
-class Alerte
+class Alerte extends Rapport
 {
-    private $_id;
     private $_name;
     private $_description;
     private $_priorite;
@@ -58,9 +57,9 @@ class AlerteManager
 
     public function add(Alerte $alerte)
     {
-        $q = $this->_db->prepare('INSERT INTO alerte SET nameAlerte = :alerte, description = :description, priorite = :priorite');
+        $q = $this->_db->prepare('INSERT INTO alerte SET id=:id, nameAlerte = :alerte, description = :description, priorite = :priorite');
 
-
+        $q->bindValue(':id',$alerte->id()PDO,PARAM_INT);
         $q->bindValue(':alerte', $alerte->name());
         $q->bindValue(':description', $alerte->description());
         $q->bindValue(':priorite', $alerte->priorite(), PDO::PARAM_INT);
@@ -79,6 +78,7 @@ class AlerteManager
 
         $q = $this->_db->query('SELECT * FROM alerte WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q->closeCursor();
 
         return new Alerte($donnees);
     }
@@ -93,5 +93,21 @@ class AlerteManager
         $q->bindValue(':priorite', $alerte->priorite(), PDO::PARAM_INT);
 
         $q->execute();
+
+    }
+
+    public function getList()
+    {
+      $rapports = [];
+
+      $request = $this->_db->query('SELECT * FROM alerte');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+      {
+        $rapports[] = new Alerte($donnees);
+      }
+      $request->closeCursor();
+
+      return $rapports;
     }
 }
