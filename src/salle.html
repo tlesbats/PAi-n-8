@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edison Ways</title>
+
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+	
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
+	<link href="css/jquery-ui.css" rel="stylesheet">
+
+	<link href="css/hover.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link href="css/jquery-ui.css" rel="stylesheet">
+		<link href="css/perso.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+	<script src="js/main.js"></script> 
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	<script src="js/interrupteur.js"></script>
+	<script src="js/graphs.js"></script>-->
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/datepicker_fr.js"></script>
+ <style>
+   
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#tab_charges { width: 350px; margin: 20px 0; }
+    div#tab_charges table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#tab_charges table td, div#tab_charges table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+ 
+	
+	</style>
+	</head>
+<body>
+	<div id="header"></div>
+	<script type="text/javascript">$("#header").load("header.html");</script>
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Compte utlisateur</li>
+				<li class="has-children users">
+					<a href="#0">Pilotage</a>
+					
+				</li>
+				<li class="has-children bookmarks">
+					<a href="#0">Consommation</a>
+</li>
+					<li class="has-children overview">
+					<a href="#0">Alertes</a>
+			</li>	
+			<li class="has-children bookmarks">
+					<a href="interrupteurs.html">Interrupteurs</a>
+</li>
+		</nav>
+<div class="content-wrapper">
+	
+<div class="icones_home" id="pos_diag">
+	<h1>Charges :</h1><br>
+					<a href="cuisine.html" class="icones hvr-border-fade rouge"><img src="images/cooking.svg" >
+				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
+				<br><span>Frigo</span></a>
+			<a href="chambre.html" class="icones hvr-border-fade rose"><img src="images/bed.svg" >
+				<br><span>Eclairage<span></a>
+			<a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/bed.svg" >
+				<br><span>Micro-ondes<span></a>
+		<a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/cooking.svg" >
+				<br><span>Mixeur</span></a><button id="more_charges">+</button>
+			<!--<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
+				<br><span>Prises Murales</span></a>
+		<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
+				<br><span>Machine à café</span></a>
+		<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
+				<br><span>Four</span></a>--><br><br>
+	<h1>Interrupteurs Virtuels :</h1><br>
+	<a href="chambre.html" class="icones hvr-border-fade orange"><img src="images/bed.svg" >
+				<br><span>Eclairage<span></a>
+			<a href="cuisine.html" class="icones hvr-border-fade vert"><img src="images/bed.svg" >
+				<br><span>Micro-ondes<span></a>
+			<a href="cuisine.html" class="icones hvr-border-fade orange"><img src="images/cooking.svg" >
+				<br><span>Mixeur</span></a>
+		<a href="cuisine.html" class="icones hvr-border-fade vert"><img src="images/cooking.svg" >
+				<br><span>Prises Murales</span></a>
+	<!--	<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
+				<br><span>Machine à café</span></a>
+		<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
+				<br><span>Four</span></a>-->	<button id="more_interrupteurs">+</button><div id="interrupteurs" style="display:inline"></div>
+	</div> 
+
+		<script type="text/javascript">	
+		$( "#more_charges" ).button();
+
+	$( "#more_interrupteurs" ).button();
+
+$( "#more_interrupteurs" ).click(function() {
+	$("#more_interrupteurs").html("");
+		$("#interrupteurs").html('<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >	<br><span>Machine à café</span></a>	<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Four</span></a><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Four</span></a><button id="less_interrupteurs">-</button>');
+		$( "#less_interrupteurs" ).button().click(function() {
+		$("#interrupteurs").html("");
+		$("#more_interrupteurs").html('<button id="mores_interrupteurs">+</button>');
+			$( "#mores_interrupteurs" ).button();
+	});
+	});
+
+	
+		  $(function() {
+    $( "#liste_charges" ).dialog({
+      autoOpen: false,
+      width:900,
+       position: { my: "center top+20%", at: "center top", of: "#pos_diag" },
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "clip",
+        duration: 1000
+      }
+    });
+ $(".icones").button();
+    $( "#more_charges" ).click(function() {
+      $( "#liste_charges" ).dialog( "open" );
+    });
+  });
+		</script>
+
+		<div id="liste_charges" title="Toutes les charges">
+  <p><div id="tab_charges" class="ui-widget">
+  
+  <table id="charges" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+        <th>Charge</th>
+        <th>Etat</th>
+        <th>Consommation</th>
+     <th>Source</th>
+     <th>Détails</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Eclairage</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>EDF</td>
+      <td>+</td>
+      </tr>
+       <tr>
+        <td>Eclairage</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>EDF</td>
+      <td>+</td>
+      </tr>
+    </tbody>
+  </table>
+Anomalies
+<br>
+<br>
+Gestion
+<p>Date de début: <input type="text" id="datepicker"></p>
+<input type="checkbox" id="check"><label for="check">Programmer fin?</label>
+<div id="endtime"></div>
+  </div></p>
+</div>
+<script type="text/javascript">
+	
+    $( "#datepicker" ).datepicker($.datepicker.regional[ "fr" ]);
+
+$( "#datepicker" ).datepicker( {
+
+        onClose: function( selectedDate ) {
+     $( "#datepickerend" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+
+ $( "#check" ).button().click(function (event){
+ 	
+ 	if (document.getElementById('check').checked)
+ 	{
+ 			$('#endtime').html('<p>Date de fin: <input type="text" id="datepickerend"></p>');
+ 			 $( "#datepickerend" ).datepicker( {
+        onClose: function( selectedDate ) {
+     $( "#datepicker" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+ 			$( "#datepickerend" ).datepicker($.datepicker.regional[ "fr" ]
+     	);
+$( "#datepickerend" ).datepicker( "option", "minDate", $( "#datepicker" ).val() );
+	 
+	
+	}
+ 	else
+ 	{
+ 			$('#endtime').html('');
+ 			$( "#datepicker" ).datepicker( "option", "maxDate", null );
+ 	}
+ });
+
+ 	$(".interrupteur").toggleSwitch();
+$("#datepicker").off( "select" );
+</script>
+
+</html>

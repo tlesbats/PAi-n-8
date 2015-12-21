@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edison Ways</title>
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+
+	<link href="jquery-ui.css" rel="stylesheet">
+	<link href="icones-salles.css" rel="stylesheet">
+	<link href="hover.css" rel="stylesheet">
+	<script src="external/jquery/jquery.js"></script>
+
+	<script src="jquery.menu-aim.js"></script>
+<script src="main.js"></script> <!-- Resource jQuery -->
+<script src="jquery-ui.js"></script>
+
+<link rel="stylesheet" href="reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+<link rel="stylesheet" type="text/css" href="tinytools.css">
+
+
+<script src="tinytools.js"></script>
+
+<script src="graphs.js"></script>
+	<style>
+	
+	
+	
+	</style>
+	</head>
+<body>
+	 <div id="legendDiv">Consommation en KWatt</div>
+	<canvas id="myChart" width="400" height="400"></canvas>
+	
+	<script type="text/javascript">
+	var ctx = document.getElementById("myChart").getContext("2d");
+	
+var data = {
+    labels: ["0h00","1h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","5h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","1h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","5h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00","0h00"],
+ datasets: [
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 0, 27, 2,58,2,3,6,8,46,8,59,54,96,4,96,2,59,63,5,45,6,59,46,4,4,84,61,54,65,65,84,61,6,64,4,61,58,15,15,49,46,16,49,45,15,94,16,84,28, 48, 40, 19, 0, 27, 2,58,2,3,6,8,46,8,59,24,96,4,96,2,59,63,5,95,6,59,46,4,4,84,1,54,65,15,84,61,64,64,4,61,58,15,15,49,46,16,49,45,15,4,16,84]
+        }
+    ]
+};
+var myLineChart = new Chart(ctx).Line(data,{   pointDotRadius : 0,pointHitDetectionRadius : 2 });
+ /*document.getElementById("legendDiv").innerHTML = myBarChart.generateLegend();*/
+</script>
+	
