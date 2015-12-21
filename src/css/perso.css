@@ -133,3 +133,66 @@ background-size: 70%;
 	background-position: center;
 	background-size: 70%;
 }
+
+.bleu_fonce
+{
+  border: 1px solid #77d5f7;
+  background: #0078ae url("../images/ui-bg_glow-ball_45_0078ae_600x600.png") 50% 50% repeat-x;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.bleu_clair
+{
+border: 1px solid #448dae;
+  background: #79c9ec url("../images/ui-bg_glow-wave_75_79c9ec_600x600.png") 50% 50% repeat-x;
+  font-weight: normal;
+  color: #026890;
+}
+
+.vert{
+border: 0;
+box-shadow: none;
+background: #6eac2c 50% 50%  repeat-x;/*click*/
+  font-weight: normal;
+  color: #ffffff;
+}
+
+
+.gris{
+
+border: 0;
+box-shadow: none;
+background: #6a6a6a 5% 5%  repeat-x;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.orange
+{
+
+border: 0;
+box-shadow: none;
+background: #f26b0f 5% 5%  repeat-x;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.rouge{
+
+
+border: 0;
+box-shadow: none;
+background: #f2180f 5% 5%  repeat-x;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.rose{
+ 
+  border: 0;
+box-shadow: none;
+background:  #f20fd0 5% 5%  repeat-x;
+  font-weight: normal;
+  color: #ffffff;
+}
