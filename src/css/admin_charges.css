@@ -1,0 +1,28 @@
+#table_charges
+{
+    margin:auto;
+    margin-top: 50px;
+    font-size:1.5em;
+    text-align: center;
+}
+
+#table_charges th
+{
+       text-align: center;
+    padding-right: 25px;
+
+}
+
+#table_charges td
+{
+    text-align: center;
+    border: 2px solid black ;
+    padding:25px;
+    padding-top:30px;
+    padding-bottom:5px;
+}
+
+  .toggler { width: 500px; height: 200px; }
+  #button { padding: .5em 1em; text-decoration: none; }
+  #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
+  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }

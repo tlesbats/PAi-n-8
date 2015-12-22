@@ -12396,8 +12396,8 @@ var spinner = $.widget( "ui.spinner", {
 			up: "ui-icon-triangle-1-n"
 		},
 		incremental: true,
-		max: null,
-		min: null,
+		max: 8,
+		min: 1,
 		numberFormat: null,
 		page: 10,
 		step: 1,
@@ -13487,13 +13487,16 @@ var tabs = $.widget( "ui.tabs", {
 		// start out by hiding, then showing, then completing
 		if ( toHide.length && this.options.hide ) {
 			this._hide( toHide, this.options.hide, function() {
-				eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
-				show();
-			});
-		} else {
+				
 			eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
 			toHide.hide();
 			show();
+            
+            });
+		} else {
+            eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
+				show();
+			
 		}
 
 		toHide.attr( "aria-hidden", "true" );
