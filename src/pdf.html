@@ -1,54 +1,36 @@
-<!doctype html>
-<html lang="fr">
-    
+<!doctype>
+<html>
 <head>
-    
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title> Gestion des charges</title>
-	<link rel="icon" type="image/png" href="images/favicon.png" /> <!-- le rel="icon" permet au navigateur de comprendre que c'est la favicone -->
+    <title>jsPDF</title>
 
-	<link href="css/jquery-ui.css" rel="stylesheet">
-	<link href="css/icones-salles.css" rel="stylesheet">
-	<link href="css/hover.css" rel="stylesheet">
-    <link href="css/admin_historique_pannes.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/perso.css">
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
-    <link rel="stylesheet" href="css/spinner.css"/>
-    
-    <script src="js/jquery.js"></script>
-	<script src="js/jquery.menu-aim.js"></script>
-    <script src="js/main.js"></script> <!-- Resource jQuery -->
-    <script src="js/jquery-ui.js"></script>
-	<script src="js/modernizr.js"></script>
-    <script src="js/tinytools.js"></script>
-    <script src="js/graphs.js"></script>
-    <script src="js/slick.js"></script>
-    <script src="js/slick_menu.js"></script> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
-	</head>
-<body>
-    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="jsjquery-ui.js"></script>
+    <script type="text/javascript" src="js/pdfgenerator.js"></script>
+    <script type="text/javascript" src="js/basic.js"></script>
 
-    
-    
-    
 
-    
-    
-    
-</body>
-    
-    
+</head>
+
     <script>
-    var doc = new jsPDF();
+    var doc = new jsPDF('Comte Rendu');
+        doc.set.fontSize(25)
+        doc.text(20, 20, "Compte Rendu pour le mois de Février 2016"); 
+        doc.text(20, 30, "Rapport des consommations")
+        doc.text(20, 40,"Rapport des pannes")
 
-doc.setFontSize(40);
-doc.text(35, 25, "Paranyan loves jsPDF");
-doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
+ 
+        doc.save('Test.pdf');
     </script>
     
+    
+    
+<body>
+
+
+
+</body>
 </html>
