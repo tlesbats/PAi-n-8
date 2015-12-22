@@ -317,11 +317,11 @@ background:  #f20fd0 5% 5%  repeat-x;
     font-size:0.5em;
 }
 
-	#icons {
+#icons {
 		margin: 0;
 		padding: 0;
 	}
-	#icons li {
+#icons li {
 		margin: 2px;
 		position: relative;
 		padding: 4px 0;
@@ -329,10 +329,15 @@ background:  #f20fd0 5% 5%  repeat-x;
 		float: left;
 		list-style: none;
 	}
-	#icons span.ui-icon {
+#icons span.ui-icon {
 		float: left;
 		margin: 0 4px;
+}
 
+.ui-icon {
+	width: 36px;
+	height: 0px;
+}
 
 
 

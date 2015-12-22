@@ -18,11 +18,17 @@
     text-align: center;
     border: 2px solid black ;
     padding:25px;
-    padding-top:30px;
+    padding-top:10px;
     padding-bottom:5px;
+    vertical-align: middle;
 }
 
   .toggler { width: 500px; height: 200px; }
   #button { padding: .5em 1em; text-decoration: none; }
   #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
   #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+
+.icon_table
+{
+    width:40px;
+}
