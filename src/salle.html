@@ -20,7 +20,7 @@
 	<script src="js/main.js"></script> 
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
 	<script src="js/interrupteur.js"></script>
-	<script src="js/graphs.js"></script>-->
+	<script src="js/graphs.js"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/datepicker_fr.js"></script>
  <style>
@@ -39,8 +39,36 @@
 	</style>
 	</head>
 <body>
-	<div id="header"></div>
-	<script type="text/javascript">$("#header").load("header.html");</script>
+	<header class="cd-main-header">
+
+		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+		
+
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			
+			<ul class="cd-top-nav">
+				
+				<li><a href="#0">Thomas le Baron</a></li>
+				
+				<li class="has-children account">
+					<a href="#0">
+						<img src="images/bg.png" alt="Notifications">
+						Compte
+					</a>
+<ul>
+
+						<li><a href="#0">Mon compte</a></li>
+						
+						<li><a href="#0">Se déconnecter</a></li>
+					</ul>
+				
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
@@ -55,10 +83,8 @@
 					<li class="has-children overview">
 					<a href="#0">Alertes</a>
 			</li>	
-			<li class="has-children bookmarks">
-					<a href="interrupteurs.html">Interrupteurs</a>
-</li>
 		</nav>
+	
 <div class="content-wrapper">
 	
 <div class="icones_home" id="pos_diag">
@@ -66,7 +92,7 @@
 					<a href="cuisine.html" class="icones hvr-border-fade rouge"><img src="images/cooking.svg" >
 				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
 				<br><span>Frigo</span></a>
-			<a href="chambre.html" class="icones hvr-border-fade rose"><img src="images/bed.svg" >
+			<a href="chambre.html" class="icones hvr-border-fade jaune"><img src="images/bed.svg" >
 				<br><span>Eclairage<span></a>
 			<a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/bed.svg" >
 				<br><span>Micro-ondes<span></a>
@@ -79,11 +105,11 @@
 		<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
 				<br><span>Four</span></a>--><br><br>
 	<h1>Interrupteurs Virtuels :</h1><br>
-	<a href="chambre.html" class="icones hvr-border-fade orange"><img src="images/bed.svg" >
+	<a href="chambre.html" class="icones hvr-border-fade gris"><img src="images/bed.svg" >
 				<br><span>Eclairage<span></a>
 			<a href="cuisine.html" class="icones hvr-border-fade vert"><img src="images/bed.svg" >
 				<br><span>Micro-ondes<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade orange"><img src="images/cooking.svg" >
+			<a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/cooking.svg" >
 				<br><span>Mixeur</span></a>
 		<a href="cuisine.html" class="icones hvr-border-fade vert"><img src="images/cooking.svg" >
 				<br><span>Prises Murales</span></a>
@@ -100,11 +126,11 @@
 
 $( "#more_interrupteurs" ).click(function() {
 	$("#more_interrupteurs").html("");
-		$("#interrupteurs").html('<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >	<br><span>Machine à café</span></a>	<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Four</span></a><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Four</span></a><button id="less_interrupteurs">-</button>');
+		$("#interrupteurs").html('<a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/cooking.svg" >	<br><span>Machine à café</span></a>	<a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/cooking.svg" ><br><span>Four</span></a><a href="cuisine.html" class="icones hvr-border-fade gris"><img src="images/cooking.svg" ><br><span>Four</span></a><button id="less_interrupteurs">-</button>');
 		$( "#less_interrupteurs" ).button().click(function() {
 		$("#interrupteurs").html("");
 		$("#more_interrupteurs").html('<button id="mores_interrupteurs">+</button>');
-			$( "#mores_interrupteurs" ).button();
+			$("#mores_interrupteurs").button();
 	});
 	});
 
@@ -123,7 +149,7 @@ $( "#more_interrupteurs" ).click(function() {
         duration: 1000
       }
     });
- $(".icones").button();
+
     $( "#more_charges" ).click(function() {
       $( "#liste_charges" ).dialog( "open" );
     });

@@ -7,17 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> Gestion des charges</title>
 	<link rel="icon" type="image/png" href="images/favicon.png" /> <!-- le rel="icon" permet au navigateur de comprendre que c'est la favicone -->
-
+ <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/icones-salles.css" rel="stylesheet">
 	<link href="css/hover.css" rel="stylesheet">
     <link href="css/admin_historique_pannes.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+   
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/perso.css">
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
-    <link rel="stylesheet" href="css/spinner.css"/>
+
+   
     
     
     <link rel="stylesheet" href="css/admin_charges.css">
@@ -30,8 +29,7 @@
 	<script src="js/modernizr.js"></script>
     <script src="js/tinytools.js"></script>
     <script src="js/graphs.js"></script>
-    <script src="js/slick.js"></script>
-    <script src="js/slick_menu.js"></script> 
+  
     
 
      
@@ -39,7 +37,49 @@
 
 	</head>
 <body>
-    
+    <header class="cd-main-header">
+
+        <a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+                <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+        <nav class="cd-nav">
+            
+            <ul class="cd-top-nav">
+                
+                <li><a href="#0">Compte administrateur</a></li>
+            
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- .cd-main-header -->
+    <main class="cd-main-content">
+        <nav class="cd-side-nav">
+            <ul>
+                <li class="cd-label">Compte administrateur</li>
+                <li class="has-children users">
+                    <a href="pilotage.html">Pilotage</a>
+                    
+                </li>
+                <li class="has-children bookmarks">
+                    <a href="consommation.html">Consommation</a>
+</li>
+                
+                <li class="has-children overview">
+                    <a href="alertes.html">Alertes</a>
+            </li>   
+                <li class="has-children overview">
+                    <a href="personnalisation.html">Personnalisation</a>
+                    <ul>
+                        <li><a href="admin_salle.html">Salles / Groupes</a></li>
+                        <li><a href="admin_interrupteurs.html">Interrupteurs</a></li>
+                        <li><a href="admin_sources.html">Sources</a></li>
+                    </ul>
+            </li>   
+                <li class="has-children overview">
+                    <a href="#0">Modifications</a>
+            </li>   
+        </nav>
+<div class="content-wrapper">
 <table id="table_charges">
 <tr class="ui-widget-header" > 
     <th>Charges</th>
