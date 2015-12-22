@@ -8,6 +8,11 @@ class Reseau
   private $_localisation;
   private $_icone;
 
+	public function __construc($donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
 	public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)
@@ -111,9 +116,12 @@ class ReseauManager
     $request = $this->_db->prepare('SELECT * FROM reveil WHERE id = :id');
 
     $request->bindValue(':id', $id, PDO::PARAM_INT);
+		$request->execute();
+
+		$donnees = $request->fetch(PDO::FETCH_ASSOC);
     $request->closeCursor();
 
-    $request->execute();
+    return new Reveil($donnees);
   }
 
   public function getList()

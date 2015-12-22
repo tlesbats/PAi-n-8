@@ -6,6 +6,11 @@ class Groupe
   private $_name;
   private $_icone;
 
+  public function __construc($donnees)
+  {
+    $this->hydrate($donnees);
+  }
+
   public function hydrate(array $donnee)
   {
       foreach ($donnees as $key => $value)
@@ -36,7 +41,7 @@ class Groupe
 }
 
 
-class managerGroupe
+class GroupeManager
   {
     private $_db;
 

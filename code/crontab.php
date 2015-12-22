@@ -1,6 +1,6 @@
 <?php
 
-function ajouteScript($chpHeure, $chpMinute, $chpJourMois, $chpJourSemaine, $chpMois, $chpCommande, $chpCommentaire)
+function ajouteScript($heure, $minute, $jourMois, $jourSemaine, $mois, $commentaire, $idObjet, $etat)
 {
 
         $debut = '#Les lignes suivantes sont gerees automatiquement via un script PHP. - Merci de ne pas editer manuellement';
@@ -11,6 +11,15 @@ function ajouteScript($chpHeure, $chpMinute, $chpJourMois, $chpJourSemaine, $chp
 
         $isSection = false;
         $maxNb = 0;                                     /* le plus grand numéro de script trouvé */
+
+        $commande = 'script'.$heure.$minute.$jourMois.$jourSemaine.$mois.$idObjet'.php'
+        $script = fopen($commande, 'w');
+        $texte = "<?php
+        //connexion à la base de donnée
+        $bd->query('UPDATE objet SET etatEffectif = ".$etat."WHERE id = ".$idObjet"');
+        ?>"
+        fwrite($f, $texte);
+        fclose($f);
 
         exec('crontab -l', $oldCrontab);                /* on récupère l'ancienne crontab dans $oldCrontab */
         foreach($oldCrontab as $index => $ligne)        /* copie $oldCrontab dans $newCrontab et ajoute le nouveau script */
@@ -28,9 +37,9 @@ function ajouteScript($chpHeure, $chpMinute, $chpJourMois, $chpJourSemaine, $chp
                 if ($ligne == $fin)                     /* on est arrivé à la fin, on rajoute le nouveau script */
                 {
                         $id = $maxNb + 1;
-                        $newCrontab[] = '# '.$id.' : '.$chpCommentaire;
-                        $newCrontab[] = $chpMinute.' '.$chpHeure.' '.$chpJourMois.' '.
-                                $chpMois.' '.$chpJourSemaine.' '.$chpCommande;
+                        $newCrontab[] = '# '.$id.' : '.$commentaire;
+                        $newCrontab[] = $minute.' '.$heure.' '.$jourMois.' '.
+                                $mois.' '.$jourSemaine.' '.$commande;
                 }
 
                 $newCrontab[] = $ligne;                 /* copie $oldCrontab, ligne après ligne */
@@ -40,9 +49,9 @@ function ajouteScript($chpHeure, $chpMinute, $chpJourMois, $chpJourSemaine, $chp
         {                                               /*  on l'ajoute maintenant */
                 $id = 1;
                 $newCrontab[] = $debut;
-                $newCrontab[] = '# 1 : '.$chpCommentaire;
+                $newCrontab[] = '# 1 : '.$commentaire;
 
-                $newCrontab[] = $chpMinute.' '.$chpHeure.' '.$chpJourMois.' '.$chpMois.' '.$chpJourSemaine.' '.$chpCommande;
+                $newCrontab[] = $minute.' '.$heure.' '.$jourMois.' '.$mois.' '.$jourSemaine.' '.$commande;
                 $newCrontab[] = $fin;
         }
 

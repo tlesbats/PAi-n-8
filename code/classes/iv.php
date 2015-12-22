@@ -6,6 +6,11 @@ class Iv
   private $_nameIv;
   private $_pilotable;
 
+	public function __construc($donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)
@@ -59,7 +64,7 @@ class IvManager
     $q = $this->_db->prepare('INSERT INTO iv SET nameIp=:nameIp, pilotable=:pilotable');
 
     $q->bindValue(':nameIp', $iv->nameIp());
-    $q->bindValue('pilotable', $iv->pilotable(), PDO::PARAM_INT);
+    $q->bindValue(':pilotable', $iv->pilotable(), PDO::PARAM_INT);
 
     $q->execute();
   }

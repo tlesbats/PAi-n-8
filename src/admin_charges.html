@@ -5,18 +5,22 @@
     
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Historique des pannes </title>
+	<title> Gestion des charges</title>
 	<link rel="icon" type="image/png" href="images/favicon.png" /> <!-- le rel="icon" permet au navigateur de comprendre que c'est la favicone -->
-
+ <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/icones-salles.css" rel="stylesheet">
 	<link href="css/hover.css" rel="stylesheet">
     <link href="css/admin_historique_pannes.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+   
 	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/tinytools.css">
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/perso.css">
+
+   
+    
+    
+    <link rel="stylesheet" href="css/admin_charges.css">
+    
     
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.menu-aim.js"></script>
@@ -25,18 +29,59 @@
 	<script src="js/modernizr.js"></script>
     <script src="js/tinytools.js"></script>
     <script src="js/graphs.js"></script>
-    <script src="js/slick.js"></script>
-    <script src="js/slick_menu.js"></script> 
+  
     
+
+     
     
-    
-    <style>
-	</style>
+
 	</head>
 <body>
-    
-<table>
-<tr class="ui-widget-header"> 
+    <header class="cd-main-header">
+
+        <a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+                <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+        <nav class="cd-nav">
+            
+            <ul class="cd-top-nav">
+                
+                <li><a href="#0">Compte administrateur</a></li>
+            
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- .cd-main-header -->
+    <main class="cd-main-content">
+        <nav class="cd-side-nav">
+            <ul>
+                <li class="cd-label">Compte administrateur</li>
+                <li class="has-children users">
+                    <a href="pilotage.html">Pilotage</a>
+                    
+                </li>
+                <li class="has-children bookmarks">
+                    <a href="consommation.html">Consommation</a>
+</li>
+                
+                <li class="has-children overview">
+                    <a href="alertes.html">Alertes</a>
+            </li>   
+                <li class="has-children overview">
+                    <a href="personnalisation.html">Personnalisation</a>
+                    <ul>
+                        <li><a href="admin_salle.html">Salles / Groupes</a></li>
+                        <li><a href="admin_interrupteurs.html">Interrupteurs</a></li>
+                        <li><a href="admin_sources.html">Sources</a></li>
+                    </ul>
+            </li>   
+                <li class="has-children overview">
+                    <a href="#0">Modifications</a>
+            </li>   
+        </nav>
+<div class="content-wrapper">
+<table id="table_charges">
+<tr class="ui-widget-header" > 
     <th>Charges</th>
     <th>Interrupteur</th>
     <th>Priorité</th>
@@ -44,17 +89,122 @@
     <th>Localisation</th>
     <th>Défaut</th>
     <th>Restreint</th>
-    <th>Modifier</th>
+    <th> Modifier</th>
+</tr>   
+
+<tr>
+    <td> Frigidaire </td>
+    <td> Cuisine 2</td>
+    <td> 1</td>
+    <td> Insérer une image </td>
+    <td> Prise 24 </td>
+    <td> ON </td>
+    <td> Retreint </td>
+    <td> <button id="button" class="ui-state-default ui-corner-all"> <img class="icon_table" src="images/gear.svg" </button> </td>
+</tr>
     
-    
-    </tr>
-    
-    
+<tr id=effect >
+    <td> 
+     <form method="post" action="traitement.php" >  <p><input type="text" name="nom_charge" value="Frigidaire" /></p>  </form>
+    </td>
+    <td> <select id="selectmenu">
+	<option> Cuisine 1</option>
+	<option> Cuisine 2</option>
+	<option selected="selected"> Cuisine 3 </option>
+	<option>Cuisine 4</option>
+	<option>Cuisine 5</option>
+</select></td>
+    <td> <h2 class="demoHeaders"></h2>
+<input id="spinner"> </td>
+    <td> <h2 class="demoHeaders"></h2>
+<p><a href="#" id="dialog-link" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Choix de l'icône</a></p></td>
+    <td>
+    <h2 class="demoHeaders"></h2>
+<select id="selectmenu2">
+	<option> Cuisine 1</option>
+	<option> Cuisine 2</option>
+	<option selected="selected"> Cuisine 3 </option>
+	<option>Cuisine 4</option>
+	<option>Cuisine 5</option>
+</select>
+ </td>
+    <td> <select id="selectmenu3">
+	<option> ON</option>
+	<option selected="selected"> OFF </option>
+</select></td>
+    <td> <select id="selectmenu4">
+	<option> Restreint </option>
+	<option selected="selected"> Non restreint </option>
+</select> </td>
+    <td> <button id="button2" class="ui-state-default ui-corner-all"> <img class="icon_table" src="images/check.svg"> </button> </td>
+</tr>
+
     
     </table>    
 
     
+    <div id="dialog" title="Choix des icones">
+	
+<h2 class="demoHeaders"></h2>
+<ul id="icons" class="ui-widget ui-helper-clearfix">
+	<li class="ui-state-default ui-corner-all" title=".ui-icon-cuisine1"><span class="ui-icon ui-icon-carat-1-ne"></span><img src="images/cooking.svg" ></li>
+</ul>
+</div>
     
+    
+    
+    
+    
+
+ <script>
+
+      $( "#effect" ).hide();
+      $( "#button" ).click(function() {
+      $( "#effect" ).show( "clip");
+    });    
+      $( "#button2" ).click(function() {
+      $( "#effect" ).hide( "clip");
+    });
+     
+      $( "#spinner" ).spinner();
+
+     $( "#selectmenu" ).selectmenu({width:140});
+    $( "#selectmenu2" ).selectmenu({width:140});
+    $( "#selectmenu3" ).selectmenu({width:140});
+     $( "#selectmenu4" ).selectmenu({width:140});
+    
+     
+     $( "#dialog" ).dialog({
+	autoOpen: false,
+	width: 400,
+	buttons: [
+		{
+			text: "Ok",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		},
+		{
+			text: "Cancel",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	]
+});
+
+// Link to open the dialog
+$( "#dialog-link" ).click(function( event ) {
+	$( "#dialog" ).dialog( "open" );
+	event.preventDefault();
+});
+
+     
+     
+     
+     
+     
+  </script>
     
     
 </body>

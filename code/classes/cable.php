@@ -8,6 +8,11 @@ class Cable
   private $_localisation;//int
   private $_icone;
 
+	public function __construc($donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
   public function informe_historique(etatBug, localisation)
   {
 
@@ -52,7 +57,7 @@ class Cable
 }
 
 
-class managerCable
+class CableManager
 {
     private $_db;
 

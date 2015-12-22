@@ -4,15 +4,22 @@
 }
 .icones 
 { 
-	background:  #B9CDE5;
-height : 150px;
-width: 200px;
+	
+height : 120px;
+width: 150px;
 float: none;
 	}
+
 
   select {
     width: 200px;
   }
+  
+.icones_home .icones  {
+ height : 150px;
+width: 200px;
+float: none;
+}
 
 .icones_home a {
 	margin-bottom: 10px;
@@ -22,11 +29,21 @@ float: none;
 line-height: 75px;
 }
 
-.icones img {
+.icones_carousel a {
+  margin-bottom: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
 
-	height :70px;
+line-height: 70px;
+}
+.icones_carousel img {
 
- 
+  height :50px;
+line-height: 70px;
+}
+.icones_home img {
+
+  height :70px;
 }
 /* Rectangle Out */
 .red {
@@ -83,6 +100,8 @@ line-height: 75px;
     border:  4px groove;
      border-color:#A3E556;
 } 
+.ui-front{z-index:0 !important; } 
+.ui-selectmenu-open {z-index:9999 !important;}
 
 .icone {
 	
@@ -144,10 +163,11 @@ background-size: 70%;
 
 .bleu_clair
 {
-border: 1px solid #448dae;
-  background: #79c9ec url("../images/ui-bg_glow-wave_75_79c9ec_600x600.png") 50% 50% repeat-x;
+  border: 0;
+box-shadow: none;
+background: #79c9ec 50% 50%  repeat-x;/*click*/
   font-weight: normal;
-  color: #026890;
+  color: #ffffff;
 }
 
 .vert{
@@ -195,4 +215,38 @@ box-shadow: none;
 background:  #f20fd0 5% 5%  repeat-x;
   font-weight: normal;
   color: #ffffff;
+}
+
+.jaune
+{
+
+  border: 0;
+box-shadow: none;
+background:  #eed313 5% 5%  repeat-x;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+#division{
+height:1500px;
+width:100%;
+
+}
+
+#modif_groupe{
+width:45%;
+height:100%;
+float:left;
+border
+}
+
+ 
+#sous_groupes{
+width:50%;
+height:100%;
+float: right;
+}
+
+#carousel_salles{
+  width: 500px;
 }

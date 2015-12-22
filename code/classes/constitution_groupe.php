@@ -6,6 +6,11 @@ class Constitution_groupe
   private $_idObjet;
   private $_idGroupe;
 
+	public function __construc($donnees)
+	{
+		$this->hydrate($donnees);
+	}
+
   public function hydrate(array $donnee)
   {
       foreach ($donnees as $key => $value)
@@ -36,7 +41,7 @@ class Constitution_groupe
 }
 
 
-class managerConstitution_groupe
+class Constitution_groupeManager
   {
     private $_db;
 

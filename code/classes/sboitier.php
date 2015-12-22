@@ -34,13 +34,15 @@ class SboitierManager extends ObjetManager
 
     public function get($id)
     {
-        $id = (int) $id;
+		$request = $this->_db->prepare('SELECT * FROM sboitier WHERE id = :id');
 
-        $q = $this->_db->query('SELECT * FROM sboitier WHERE id = '.$id);
-        $donnees = $q->fetch(PDO::FETCH_ASSOC);
-        $q->closeCursor();
+    	$request->bindValue(':id', $id, PDO::PARAM_INT);
+		$request->execute();
 
-        return new Sboitier($donnees);
+		$donnees = $request->fetch(PDO::FETCH_ASSOC);
+    	$request->closeCursor();
+
+    	return new Sboitier($donnees);
     }
 
     public function getList()

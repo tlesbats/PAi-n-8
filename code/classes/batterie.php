@@ -4,19 +4,6 @@ class Batterie extends Source
 {
   private $_stockage;
 
-  public function hydrate(array $donnee)
-  {
-      foreach ($donnees as $key => $value)
-      {
-        $method = 'set'.ucfirst($key);
-
-        if (method_exists($this, $method))
-        {
-          $this->$method($value);
-        }
-      }
-  }
-
   public function id() {return $this->_id;}
   public function stockage() {return $this->_stockage;}
 
@@ -25,7 +12,7 @@ class Batterie extends Source
 }
 
 
-class managerBatterie
+class BatterieManager
 {
     private $_db;
 

@@ -8,6 +8,11 @@ class reveil
   private $_weekly;
   private $_date;
 
+  public function __construc($donnees)
+  {
+    $this->hydrate($donnees);
+  }
+
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)
@@ -108,12 +113,15 @@ class ReveilManager
 
   public function get($id)
   {
-    $request = $this->_bd->prepare('SELECT * FROM reveil WHERE id = :id');
+		$request = $this->_db->prepare('SELECT * FROM reveil WHERE id = :id');
 
     $request->bindValue(':id', $id, PDO::PARAM_INT);
+		$request->execute();
+
+		$donnees = $request->fetch(PDO::FETCH_ASSOC);
     $request->closeCursor();
 
-    $request->execute();
+    return new Reveil($donnees);
   }
 
   public function getList()
@@ -124,7 +132,8 @@ class ReveilManager
 
     while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
     {
-      $reveils[] = new Reveil($donnees);
+      $reveils[] = new Reveil();
+
     }
 
     return $reveils;
