@@ -64,7 +64,7 @@ class IvManager
     $q = $this->_db->prepare('INSERT INTO iv SET nameIp=:nameIp, pilotable=:pilotable');
 
     $q->bindValue(':nameIp', $iv->nameIp());
-    $q->bindValue('pilotable', $iv->pilotable(), PDO::PARAM_INT);
+    $q->bindValue(':pilotable', $iv->pilotable(), PDO::PARAM_INT);
 
     $q->execute();
   }

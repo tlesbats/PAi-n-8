@@ -1,20 +1,27 @@
 <!doctype html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8">
+
+		<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Edison Ways</title>
+<link rel="stylesheet" type="text/css" href="css/slick.css"/>
 
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
 		<link rel="icon" type="image/png" href="images/favicon.png" />
 	
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
-	<link href="css/jquery-ui.css" rel="stylesheet">
-	<link href="css/perso.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">
+	
 	<link href="css/hover.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	
+	<link href="css/perso.css" rel="stylesheet">
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	
+
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.menu-aim.js"></script>
 	<script src="js/main.js"></script> 
@@ -22,6 +29,9 @@
 	<script src="js/interrupteur.js"></script>
 	<script src="js/graphs.js"></script>-->
 	<script src="js/jquery-ui.js"></script>
+<script src="js/owl.carousel.js"></script>
+	<link href="icones-salles.css" rel="stylesheet">
+	
 </head>
 <body>
 	<header class="cd-main-header">
@@ -66,31 +76,55 @@
 					<a href="#0">Modifications</a>
 			</li>	
 		</nav>
-<div class="content-wrapper">
-	<br>
-	<div class="icones_home">
-					<a href="salle.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
-				<br><span>Cuisine</span></a>
-			<a href="chambre.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chambre 2<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chambre 3<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<br><span>Cuisine</span></a>
-		</div> 
-</div>
-
-	</body>
-	<script type='text/javascript'>
-$('.icones').button();
-	/*
-var doc = new jsPDF();
-doc.text(20, 20, 'Hello world!');
-doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-doc.addPage();
-doc.text(20, 20, 'Do you like that?');
-
-doc.save('Test.pdf'); *//*PDF*/
- </script> 
-</html>
+<div class="content-wrapper"> 
+    
+    
+    <br>
+    <h2>Compte utilisateur :</h2>
+    <table cellpadding="5">    
+    <tr>
+        <td><label for="id_user">Nouvel identifiant : </label></td>
+        <td><input id="id_user" type="text" value="utilisateur"></td>
+    </tr>
+    <tr>
+            <td><label for="password_user">Nouveau mot de passe : </label></td>
+            <td><input id="password_user" type="password" value=""></td>
+        </tr>    
+    <tr>
+            <td><label for="confirm_pw_user">Confirmation : </label></td>
+            <td><input id="confirm_pw_user"type="password" value=""></td>
+        </tr>
+    </table>
+    <br>
+     <br>
+    <h2>Compte administrateur :</h2>
+    <table cellpadding="5">    
+    <tr>
+        <td><label for="id_admin">Nouvel identifiant : </label></td>
+        <td><input id="id_admin" type="text" value="administrateur"></td>
+    </tr>
+    <tr>
+            <td><label for="password_admin">Nouveau mot de passe : </label></td>
+            <td><input id="password_admin" type="password" value=""></td>
+        </tr>    
+    <tr>
+            <td><label for="confirm_pw_admin">Confirmation : </label></td>
+            <td><input id="confirm_pw_admin"type="password" value=""></td>
+        </tr>
+    
+    </table>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
