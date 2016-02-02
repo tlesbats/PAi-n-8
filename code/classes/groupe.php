@@ -5,6 +5,7 @@ class Groupe
   private $_id;
   private $_name;
   private $_icone;
+	private $_salle;
 
   public function __construc($donnees)
   {
@@ -27,6 +28,7 @@ class Groupe
   public function id() {return $this->_id;}
   public function name() {return $this->_name;}
   public function icone() {return $this->_icone;}
+	public function salle() {return $this->_salle;}
 
   public function setId($id) {$this->_id=(int) $id;}
   public function setName($name)
@@ -37,7 +39,10 @@ class Groupe
   {
       if (is_string($icone)) {$this->_icone=$icone;}
   }
-
+	public function setSalle($salle)
+	{
+		if ($salle === 0 || $salle === 1) {$this->_salle = $salle;}
+	}
 }
 
 
@@ -52,10 +57,11 @@ class GroupeManager
 
     public function add(Groupe $groupe)
     {
-        $q = $this->_db->prepare('INSERT INTO groupe SET nameGroupe=:name, icone=:icone');
+        $q = $this->_db->prepare('INSERT INTO groupe SET nameGroupe=:name, icone=:icone, salle=:salle');
 
         $q->bindValue(':name', $groupe->name());
         $q->bindValue(':icone', $groupe->icone());
+				$q->bindValue(':salle', $groupe->salle());
 
         $q->execute();
     }
@@ -78,11 +84,12 @@ class GroupeManager
 
     public function update(Groupe $groupe)
     {
-        $q=$this->_db->prepare('UPDATE groupe SET nameGroupe=:name, icone=:icone WHERE id = :id');
+        $q=$this->_db->prepare('UPDATE groupe SET nameGroupe=:name, icone=:icone, salle=:salle WHERE id = :id');
 
         $q->bindValue(':name', $groupe->name());
         $q->bindValue(':icone', $groupe->icone());
-        $q->bindValue(':id',$constitution_groupe->id(), PDO::PARAM_INT);
+        $q->bindValue(':id',$groupe->id(), PDO::PARAM_INT);
+				$q->bindValue(':salle', $groupe->salle());
 
         $q->execute();
     }

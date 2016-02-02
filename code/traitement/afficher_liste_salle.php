@@ -7,12 +7,6 @@ include_once('../classes/compte');
 
 $groupeManager = new GroupeManager($bd);
 $groupes = $groupeManager->getList();
-echo json_encode($groupes);
-
-$compteManager = new CompteManager($bd);
-$compte = $compteManager->get($_SESSION['id']);
-echo json_encode($compte);
-
 $groupesBug = [];
 
 $request = $bd->query('SELECT g.id FROM groupe g
@@ -27,6 +21,16 @@ if ($request)
     }
 }
 $request->closeCursor();
-echo json_encode($groupesBug);
+foreach($groupes as $key => $groupe)
+{
+	if (in_array($groupe['id'], $groupesBug))
+	{
+		$groupes[$key]['etatBug'] = 1;
+	}
+	else
+	{
+		$groupes[$key]['etatBug'] = 0;
+	}
+}
 
-?>
+echo json_encode($groupes);

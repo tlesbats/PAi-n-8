@@ -3,6 +3,7 @@
 class Source extends Objet
 {
   private $_prix;
+	private $_couleur;
 
   public function __construc($donnees)
   {
@@ -21,11 +22,16 @@ class Source extends Objet
   }
 
   public function getPrix() {return $this->_prix;}
+	public function getCouleur() {return $this->_couleur;}
 
   public function setPrix($prix)
   {
     $this->_prix = $prix;
   }
+	public function setCouleur($couleur)
+	{
+		$this->_couleur = $couleur;
+	}
 }
 
 class SourceManager extends ObjetManager
@@ -39,10 +45,11 @@ class SourceManager extends ObjetManager
 
   public function add(Source $source)
   {
-    $request = $this->_bd->prepare('INSERT INTO source(id, prix) VALUES (:id, :prix)');
+    $request = $this->_bd->prepare('INSERT INTO source(id, prix, couleur) VALUES (:id, :prix, :couleur)');
 
     $request->bindValue(':id', $source->getId(), PDO::PARAM_INT);
     $request->bindValue(':prix', $source->getPrix(), PDO::PARAM_STR);
+    $request->bindValue(':couleur', $source->getCouleur(), PDO::PARAM_STR);
 
     $request->execute();
   }
@@ -58,10 +65,11 @@ class SourceManager extends ObjetManager
 
   public function update(Source $source)
   {
-    $request = $this->_db->prepare('UPDATE source SET prix = :prix WHERE id = :id');
+    $request = $this->_db->prepare('UPDATE source SET prix = :prix, couleur = :couleur WHERE id = :id');
 
     $request->bindValue(':prix', $source->getPrix(), PDO::PARAM_STR);
     $request->bindValue(':id', $source->getId(), PDO::PARAM_INT);
+    $request->bindValue(':couleur', $source->getCouleur(), PDO::PARAM_STR);
 
     $request->execute();
   }
