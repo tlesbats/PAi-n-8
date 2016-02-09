@@ -14,7 +14,8 @@
 	<link href="css/hover.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<link href="css/jquery-ui.css" rel="stylesheet">
-		<link href="css/perso.css" rel="stylesheet">
+    <link href="css/perso.css" rel="stylesheet">
+    <link href="css/salle.css" rel="stylesheet">
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.menu-aim.js"></script>
 	<script src="js/main.js"></script> 
@@ -23,19 +24,10 @@
 	<script src="js/graphs.js"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/datepicker_fr.js"></script>
+    
  <style>
    
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
-    div#tab_charges { width: 350px; margin: 20px 0; }
-    div#tab_charges table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-    div#tab_charges table td, div#tab_charges table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-    .ui-dialog .ui-state-error { padding: .3em; }
-    .validateTips { border: 1px solid transparent; padding: 0.3em; }
- 
-	
+
 	</style>
 	</head>
 <body>
@@ -157,7 +149,7 @@ $( "#more_interrupteurs" ).click(function() {
 		</script>
 
 		<div id="liste_charges" title="Toutes les charges">
-  <p><div id="tab_charges" class="ui-widget">
+  <div id="tab_charges" class="ui-widget">
   
   <table id="charges" class="ui-widget ui-widget-content">
     <thead>
@@ -175,15 +167,52 @@ $( "#more_interrupteurs" ).click(function() {
         <td><input type="checkbox" class="interrupteur"/></td>
         <td>30 kWh</td>
       <td>EDF</td>
-      <td>+</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
       </tr>
        <tr>
-        <td>Frigo</td>
+        <td><p>Frigo</p></td>
         <td><input type="checkbox" class="interrupteur"/></td>
         <td>0 kWh</td>
-      <td>EDF</td>
-      <td>+</td>
+      <td>EDF</td> 
+      <td> <button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button> </td>   <!-- si on garde id alors on a le bon design, avec class ça marche pas -->
       </tr>
+        <tr class=prog>
+            <td colspan=5 > <p> <span class=debut_prog>• 07h00</span>      <span class=fin_prog>•09h00</span></p>  </td>
+        </tr>
+        <tr class=prog>
+            <td colspan=5 > <p> <span class=debut_prog>• 17h00</span>    </p>  </td>
+        </tr>
+        <tr class=prog>
+            <td colspan=5 > <p> <span class=fin_prog>•22h00</span></p>  
+            <div class=prog_day> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+            </td>
+        </tr>
+        <tr class=prog>
+            <td colspan=5 > 
+                <div class=prog_day> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+            </td>
+        </tr>
+        
+        <p> Lu </p>
+        
+        
+        
     </tbody>
   </table>
 <br>
@@ -192,22 +221,27 @@ Gestion
 <p>Date de début: <input type="text" id="datepicker"></p>
 <input type="checkbox" id="check"><label for="check">Programmer fin?</label>
 <div id="endtime"></div>
-  </div></p>
+  </div>
 </div>
 <script type="text/javascript">
 	
+    
+    $(".prog").hide();
+    $( ".button_prog" ).click(function() {
+      $( ".prog" ).show( "clip");
+    });   
+    
+    
     $( "#datepicker" ).datepicker($.datepicker.regional[ "fr" ]);
+    $( "#datepicker" ).datepicker( {
+            onClose: function( selectedDate ) {
+                    $( "#datepickerend" ).datepicker( "option", "minDate", selectedDate );
+                                            }
+                                    }  );
 
-$( "#datepicker" ).datepicker( {
-
-        onClose: function( selectedDate ) {
-     $( "#datepickerend" ).datepicker( "option", "minDate", selectedDate );
-      }
-    });
-
+    
  $( "#check" ).button().click(function (event){
- 	
- 	if (document.getElementById('check').checked)
+ 	 	if (document.getElementById('check').checked)
  	{
  			$('#endtime').html('<p>Date de fin: <input type="text" id="datepickerend"></p>');
  			 $( "#datepickerend" ).datepicker( {
