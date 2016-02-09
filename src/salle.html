@@ -177,26 +177,7 @@ $( "#more_interrupteurs" ).click(function() {
       <td> <button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button> </td>   <!-- si on garde id alors on a le bon design, avec class ça marche pas -->
       </tr>
         <tr class=prog>
-            <td colspan=5 > <p> <span class=debut_prog>• 07h00</span>      <span class=fin_prog>•09h00</span></p>  </td>
-        </tr>
-        <tr class=prog>
-            <td colspan=5 > <p> <span class=debut_prog>• 17h00</span>    </p>  </td>
-        </tr>
-        <tr class=prog>
-            <td colspan=5 > <p> <span class=fin_prog>•22h00</span></p>  
-            <div class=prog_day> 
-                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
-                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
-                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
-                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
-                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
-                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
-                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
-                </div>
-            </td>
-        </tr>
-        <tr class=prog>
-            <td colspan=5 > 
+            <td colspan=4 > 
                 <div class=prog_day> 
                 <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
                 <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
@@ -206,23 +187,64 @@ $( "#more_interrupteurs" ).click(function() {
                 <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
                 <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
                 </div>
+                <p> </br> <span class=debut_prog>• 07h00</span>      <span class=fin_prog>•09h00</span></p>  </td>
+      <td>
+        <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
+        </td>
+        </tr>
+        <tr class=prog>
+            
+            <td colspan=4 > 
+                <div class=prog_day> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+                <p> </br> <span class=debut_prog>• 17h00</span>    </p> 
+            </td>
+        <td>
+        <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
+        </td>
+        </tr>
+        <tr class=prog>
+            <td colspan=4 > 
+            <div class=prog_day> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+                <p> </br> <span class=fin_prog>•22h00</span></p>  
+            </td>
+                <td>
+        <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
+        </td>
+        </tr>
+        <tr class=prog>
+            <td colspan=5 > 
+   <button class="button_ajouter_prog" class="ui-state-default ui-corner-all"> <p> Ajouter réveil</p> </button> 
             </td>
         </tr>
         
-        <p> Lu </p>
+        
         
         
         
     </tbody>
   </table>
+    
+    
+    
 <br>
 <br>
-Gestion
-<p>Date de début: <input type="text" id="datepicker"></p>
-<input type="checkbox" id="check"><label for="check">Programmer fin?</label>
-<div id="endtime"></div>
-  </div>
-</div>
+
 <script type="text/javascript">
 	
     

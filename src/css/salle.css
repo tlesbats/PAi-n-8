@@ -51,6 +51,19 @@
 
 .prog_day
 {
+    margin-top: 10px;
     margin-left :15px;
-    padding-left;0px;
+    padding-left:0px;
+}
+
+.icon_gear_prog
+{
+    width: 45px;
+
+}
+
+.button_change_prog
+{
+ 
+  margin-bottom: 5px;
 }
