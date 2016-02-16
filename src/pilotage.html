@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edison Ways</title>
+
+	<link rel="icon" type="image/png" href="images/favicon.png" />
+	
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
+	<link href="css/jquery-ui.css" rel="stylesheet">
+
+	<link href="css/hover.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link href="css/jquery-ui.css" rel="stylesheet">
+		<link href="css/perso.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+	<script src="js/main.js"></script> 
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	<script src="js/interrupteur.js"></script>
+	<script src="js/graphs.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/datepicker_fr.js"></script>
+ <style>
+   
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#tab_charges { width: 350px; margin: 20px 0; }
+    div#tab_charges table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#tab_charges table td, div#tab_charges table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+ 
+	
+	</style>
+	</head>
+<body>
+	<header class="cd-main-header">
+
+		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+		
+
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			
+			<ul class="cd-top-nav"style="text-align:center;">
+			
+				<li class="has-children account">
+					<a href="#0" class="cd-nav-trigger">
+						
+						
+					</a>
+<ul>
+
+						<li><a id="acces" >Accéder au compte administrateur</a></li>
+
+							bkjbk<label for="identity">Identifiant</label><br /><input type ="text" name="user" id="identity" class="input-perso" style="width:70%;margin-left:15%;"/><br /><br/>
+							<label for="mdp">Mot de passe</label><br /><input type="password" name="mdp" id="mdp" style="width:70%;margin-left:15%;"/><br/><br/>
+							<input type="submit" value="Valider" id="valider" />
+							
+						
+						<li><a href="#0">Se déconnecter</a></li>
+					</ul>
+				
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Compte utlisateur</li>
+				<li class="has-children users">
+					<a href="#0">Pilotage</a>
+					
+				</li>
+				<li class="has-children bookmarks">
+					<a href="#0">Consommation</a>
+</li>
+					<li class="has-children overview">
+					<a href="#0">Alertes</a>
+			</li>	
+		</nav>
+	
+<div class="content-wrapper">
+	<h1>Charges :</h1><br>
+	<div class="icones_home">
+	<div id="liste_charge">
+					
+			</div><button id="more_charges">Visualiser toutes les charges</button>
+		
+		<br><br>
+		<div class="icones_home">
+	<h1>Interrupteurs Virtuels :</h1><br>
+	<a class="icones hvr-border-fade gris" onclick="activer_interrupteur('#interrupteur-2')"  id="interrupteur-2"><img src="images/shut-down2.svg" >
+				<br><span>Eclairage<span></a>
+			<a class="icones hvr-border-fade vert" id="interrupteur-1" onclick="activer_interrupteur('#interrupteur-1')"><img src="images/shut-down2.svg" >
+				<br><span>Micro-ondes<span></a>
+			<a class="icones hvr-border-fade gris" onclick="activer_interrupteur('#interrupteur-3')" id="interrupteur-3"><img src="images/shut-down2.svg" onclick="activer_interrupteur()" >
+				<br><span>Mixeur</span></a>
+		<a class="icones hvr-border-fade vert" onclick="activer_interrupteur('#interrupteur-4')" id="interrupteur-4"><img src="images/shut-down2.svg"  >
+				<br><span>Prises Murales</span></a>
+		<button id="more_interrupteurs">+</button><div id="interrupteurs" style="display:inline"></div>
+	</div>
+	</div> 
+
+		<script type="text/javascript">	
+		$( "#connexion" ).hide();
+		$("#acces").on('click', function(event){$( "#connexion" ).show()});
+$( "#valider" ).button();
+	$( "#more_interrupteurs" ).button();
+
+function afficher_liste_charge(data)
+{	
+	 var text1="<a onclick=\"activer_charge('#charge-";
+	 var text2="')\" class=\"icones hvr-border-fade ";
+	 var text3="\" id=\"charge-"
+	
+	var text4="\"><img src=\"images/"
+	var text5="\" ><br><span>"
+	var text6="<span></a>"
+$.each(data, function (index, value) {
+	if (index<15){
+  document.getElementById("liste_charge").innerHTML+=text1+value["id"]+"','"+value["couleur"]+text2+value["couleur"]+text3+value["id"]+text4+value["icone"]+text5+value["nom"]+text6;}
+});
+$('.icones').button();
+ document.getElementById("liste_charge").innerHTML+='<button id="more_charges">Visualiser toutes les charges</button>';
+ $( "#more_charges" ).button();
+  
+}
+
+ $(function() {
+    $( "#liste_charges" ).dialog({
+      autoOpen: false,
+      width:500,
+      
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "clip",
+        duration: 1000
+      }
+    });
+
+    $( "#more_charges" ).click(function() {
+      $( "#liste_charges" ).dialog( "open" );
+    });
+  });
+
+$( "#more_interrupteurs" ).click(function() {
+	$("#more_interrupteurs").html("");
+		$("#interrupteurs").html("<a onclick=\"activer_interrupteur('#interrupteur-5')\" id=\"interrupteur-5\"class=\"icones hvr-border-fade gris\"><img src=\"images/shut-down2.svg\" ><br><span>Machine à café</span></a><button id=\"less_interrupteurs\">-</button>");
+		$( "#less_interrupteurs" ).button().click(function() {
+		$("#interrupteurs").html("");
+		$("#more_interrupteurs").html('<button id="mores_interrupteurs">+</button>');
+			$("#mores_interrupteurs").button();
+	});
+	});
+function afficher_liste_interrupteur(data)
+{	
+	 var text1="<a onclick=\"activer_charge('#charge-";
+	 var text2="')\" class=\"icones hvr-border-fade ";
+	 var text3="\" id=\"charge-"
+	
+	var text4="\"><img src=\"images/"
+	var text5="\" ><br><span>"
+	var text6="<span></a>"
+$.each(data, function (index, value) {
+	if (index<15){
+  document.getElementById("liste_charge").innerHTML+=text1+value["id"]+"','"+value["couleur"]+text2+value["couleur"]+text3+value["id"]+text4+value["icone"]+text5+value["nom"]+index+text6;
+}
+else {}
+});
+$('.icones').button();
+}
+$.post("BDD/afficher_liste_charge.php", {groupe : 3})
+  .done(function( data ) {
+   afficher_liste_charge(JSON.parse(data));
+  });
+
+
+function activer_charge(id,couleur)
+{
+$(id).toggleClass(couleur);
+
+$(id).toggleClass('gris');
+}
+
+function activer_interrupteur(id)
+{
+$(id).toggleClass('vert');
+
+$(id).toggleClass('gris');
+}
+		
+		</script>
+
+		<div id="liste_charges" title="Toutes les charges">
+  <div id="tab_charges" class="ui-widget">
+  
+  <table id="charges" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+        <th>Charge</th>
+        <th>Etat</th>
+        <th>Consommation</th>
+     <th>Source</th>
+     <th>Détails</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Eclairage</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>EDF</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      </tr>
+       <tr>
+        <td><p>Frigo</p></td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>0 kWh</td>
+      <td>EDF</td> 
+      <td> <button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button> </td>   <!-- si on garde id alors on a le bon design, avec class ça marche pas -->
+      </tr>
+        <tr class=prog>
+            <td colspan=4 > 
+                <div class=prog_day> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+                <p> </br> <span class=debut_prog>• 07h00</span>      <span class=fin_prog>•09h00</span></p>  </td>
+      <td>
+        <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
+        </td>
+        </tr>
+        <tr class=prog>
+            
+            <td colspan=4 > 
+                <div class=prog_day> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+                <p> </br> <span class=debut_prog>• 17h00</span>    </p> 
+            </td>
+        <td>
+        <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
+        </td>
+        </tr>
+        <tr class="prog">
+            <td colspan="4" > 
+            <div class="prog_day"> 
+                <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Je </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Ve </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Sa </p> </button> 
+                <button class="ui-state-default ui-corner-all"> <p> Di </p> </button> 
+                </div>
+                <p> </br> <span class=fin_prog>•22h00</span></p>  
+            </td>
+                <td>
+        <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
+        </td>
+        </tr>
+        <tr class=prog>
+            <td colspan=5 > 
+   <button class="button_ajouter_prog" class="ui-state-default ui-corner-all"> <p> Ajouter réveil</p> </button> 
+            </td>
+        </tr>
+        
+        
+        
+        
+        
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+	  $(".prog").hide();
+    $( ".button_prog" ).click(function() {
+      $( ".prog" ).show( "clip");
+    });   
+
+    $( "#datepicker" ).datepicker($.datepicker.regional[ "fr" ]);
+
+$( "#datepicker" ).datepicker( {
+
+        onClose: function( selectedDate ) {
+     $( "#datepickerend" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+
+ $( "#check" ).button().click(function (event){
+ 	
+ 	if (document.getElementById('check').checked)
+ 	{
+ 			$('#endtime').html('<p>Date de fin: <input type="text" id="datepickerend"></p>');
+ 			 $( "#datepickerend" ).datepicker( {
+        onClose: function( selectedDate ) {
+     $( "#datepicker" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+ 			$( "#datepickerend" ).datepicker($.datepicker.regional[ "fr" ]
+     	);
+$( "#datepickerend" ).datepicker( "option", "minDate", $( "#datepicker" ).val() );
+	 
+	
+	}
+ 	else
+ 	{
+ 			$('#endtime').html('');
+ 			$( "#datepicker" ).datepicker( "option", "maxDate", null );
+ 	}
+ });
+
+ 	$(".interrupteur").toggleSwitch();
+$("#datepicker").off( "select" );
+</script>
+
+</html>
