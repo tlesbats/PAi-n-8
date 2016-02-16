@@ -5,6 +5,7 @@ class Constitution_groupe
   private $_id;
   private $_idObjet;
   private $_idGroupe;
+	private $_idSousGroupe;
 
 	public function __construc($donnees)
 	{
@@ -27,6 +28,7 @@ class Constitution_groupe
   public function id() {return $this->_id;}
   public function idGroupe() {return $this->_idGroupe;}
   public function idObjet() {return $this->_idObjet;}
+	public function idSousGroupe() {return $this->_idSousGroupe;}
 
   public function setId($id) {$this->_id=(int) $id;}
   public function setIdObjet($idObjet)
@@ -35,9 +37,12 @@ class Constitution_groupe
   }
   public function setIdGroupe($idGroupe)
   {
-      if (is_int($idGroupe)) {$this->_idGroupe=$isGroupe;}
+      if (is_int($idGroupe)) {$this->_idGroupe=$idGroupe;}
   }
-
+	public function setIdSousGroupe($idSousGroupe)
+	{
+		if (is_int($idSousGroupe)) {$this->_idSousGroupe=$idSousGroupe;}
+	}
 }
 
 
@@ -52,10 +57,11 @@ class Constitution_groupeManager
 
     public function add(Constitution_groupe $constitution_groupe)
     {
-        $q = $this->_db->prepare('INSERT INTO constitution_groupe SET idObjet=:idObjet, idGroupe=:idGroupe');
+        $q = $this->_db->prepare('INSERT INTO constitution_groupe SET idObjet=:idObjet, idGroupe=:idGroupe, idSousGroupe=:idSousGroupe');
 
         $q->bindValue(':idObjet', $constitution_groupe->idObjet(),PDO::PARAM_INT);
         $q->bindValue(':idGroupe', $constitution_groupe->idGroupe(),PDO::PARAM_INT);
+        $q->bindValue(':idSousGroupe', $constitution_groupe->idSousGroupe(), PDO::PARAM_INT);s
 
         $q->execute();
     }
@@ -78,11 +84,12 @@ class Constitution_groupeManager
 
     public function update(Consommation $consommation)
     {
-        $q=$this->_db->prepare('UPDATE constitution_groupe SET idObjet=:idObjet, idGroupe=:idGroupe WHERE id = :id');
+        $q=$this->_db->prepare('UPDATE constitution_groupe SET idObjet=:idObjet, idGroupe=:idGroupe, idSousGrouoe = :idSousGroupe WHERE id = :id');
 
         $q->bindValue(':idObjet', $constitution_groupe->idObjet(), PDO::PARAM_INT);
         $q->bindValue(':idGroupe', $constitution_groupe->idGroupe(), PDO::PARAM_INT);
         $q->bindValue(':id',$constitution_groupe->id(), PDO::PARAM_INT);
+        $q->bindValue(':idSousGroupe', $constitution_groupe->idSousGroupe(), PDO::PARAM_INT);
 
         $q->execute();
     }

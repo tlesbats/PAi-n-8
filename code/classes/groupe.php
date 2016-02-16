@@ -2,10 +2,10 @@
 
 class Groupe
 {
-  private $_id;
-  private $_name;
-  private $_icone;
-	private $_salle;
+  private $id;
+  private $name;
+  private $icone;
+	private $salle;
 
   public function __construc($donnees)
   {
@@ -25,39 +25,39 @@ class Groupe
       }
   }
 
-  public function id() {return $this->_id;}
-  public function name() {return $this->_name;}
-  public function icone() {return $this->_icone;}
-	public function salle() {return $this->_salle;}
+  public function id() {return $this->id;}
+  public function name() {return $this->name;}
+  public function icone() {return $this->icone;}
+	public function salle() {return $this->salle;}
 
-  public function setId($id) {$this->_id=(int) $id;}
+  public function setId($id) {$this->id=(int) $id;}
   public function setName($name)
   {
-      if (is_string($name)) {$this->_name = $name;}
+      if (is_string($name)) {$this->name = $name;}
   }
   public function setIcone($icone)
   {
-      if (is_string($icone)) {$this->_icone=$icone;}
+      if (is_string($icone)) {$this->icone=$icone;}
   }
 	public function setSalle($salle)
 	{
-		if ($salle === 0 || $salle === 1) {$this->_salle = $salle;}
+		if ($salle === 0 || $salle === 1) {$this->salle = $salle;}
 	}
 }
 
 
 class GroupeManager
   {
-    private $_db;
+    private $db;
 
     public function __construct($db)
     {
-        $this->_db=$db;
+        $this->db=$db;
     }
 
     public function add(Groupe $groupe)
     {
-        $q = $this->_db->prepare('INSERT INTO groupe SET nameGroupe=:name, icone=:icone, salle=:salle');
+        $q = $this->db->prepare('INSERT INTO groupe SET nameGroupe=:name, icone=:icone, salle=:salle');
 
         $q->bindValue(':name', $groupe->name());
         $q->bindValue(':icone', $groupe->icone());
@@ -68,14 +68,14 @@ class GroupeManager
 
     public function delete(Groupe $groupe)
     {
-        $this->_db->exec('DELETE FROM groupe WHERE id='.$groupe->id());
+        $this->db->exec('DELETE FROM groupe WHERE id='.$groupe->id());
     }
 
     public function get($id)
     {
         $id = (int) $id;
 
-        $q = $this->_db->query('SELECT * FROM groupe WHERE id = '.$id);
+        $q = $this->db->query('SELECT * FROM groupe WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
         $q->closeCursor();
 
@@ -98,7 +98,7 @@ class GroupeManager
     {
       $rapports = [];
 
-      $request = $this->_db->query('SELECT * FROM groupe');
+      $request = $this->db->query('SELECT * FROM groupe');
 
       while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
       {

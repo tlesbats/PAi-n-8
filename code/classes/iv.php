@@ -5,6 +5,7 @@ class Iv
   private $_id;
   private $_nameIv;
   private $_pilotable;
+	private $_icone;
 
 	public function __construc($donnees)
 	{
@@ -26,6 +27,7 @@ class Iv
     }
   }
 
+	public function icone() {return $this->_icone;}
   public function id() {return $this->_id;}
   public function nameIv(){return $this->_nameIv;}
   public function pilotable() {return $this->_pilotable}
@@ -45,7 +47,10 @@ class Iv
   {
     if (is_int($pilotable)){$this->_pilotable =$pilotable}
   }
-
+	public function setIcone($icone)
+	{
+		$this->_icone = $icone;
+	}
 }
 
 
@@ -61,10 +66,11 @@ class IvManager
 
   public function add(Iv $ip)
   {
-    $q = $this->_db->prepare('INSERT INTO iv SET nameIp=:nameIp, pilotable=:pilotable');
+    $q = $this->_db->prepare('INSERT INTO iv SET nameIp=:nameIp, pilotable=:pilotable, icone = :icone');
 
     $q->bindValue(':nameIp', $iv->nameIp());
     $q->bindValue(':pilotable', $iv->pilotable(), PDO::PARAM_INT);
+    $q->bindValue(':icone', $iv->icone(), PDO::PARAM_STR);
 
     $q->execute();
   }
@@ -88,11 +94,12 @@ class IvManager
 
   public function update(Iv $iv)
   {
-    $q = $this->_db->prepare('UPDATE Iv SET nameIv=:nameIv, pilotable=:pilotable WHERE id = :id');
+    $q = $this->_db->prepare('UPDATE Iv SET nameIv=:nameIv, pilotable=:pilotable, icone = :icone WHERE id = :id');
 
     $q->bindValue(':id', $iv->id(), PDO::PARAM_INT);
     $q->bindValue(':nameIv', $iv->nameIv());
-    $q->bindValue('pilotable', $iv->pilotable(), PDO::PARAM_INT);
+    $q->bindValue(':pilotable', $iv->pilotable(), PDO::PARAM_INT);
+    $q->bindValue(':icone', $iv->icone(), PDO::PARAM_STR);
 
     $q->execute();
   }
