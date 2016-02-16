@@ -42,34 +42,34 @@
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-				<li class="cd-label">Gestion Utilisateur</li>
+				<li class="cd-label">Compte administrateur</li>
 				<li class="has-children users">
 					<a href="pilotage.html">Pilotage</a>
 					
 				</li>
 				<li class="has-children bookmarks">
 					<a href="consommation.html">Consommation</a>
-                </li>
-                <li class="has-children notifications ">
-					<a href="alertes.html"> Alertes <span class="count">3</span> </a>
-                </li>	
-                
-                <li class="cd-label">Gestion Administrateur</li>
-		
-				<li class="has-children overview"><a href="admin_salle.html">Charges</a></li>
-                <li class="has-children overview"><a href="admin_salle.html">Salles / Groupes</a></li>
-				<li class="has-children overview"><a href="admin_interrupteurs.html">Interrupteurs</a></li>
-				<li class="has-children overview"><a href="admin_sources.html">Sources</a></li>
-					
+</li>
 				
+				<li class="has-children overview">
+					<a href="alertes.html">Alertes</a>
+			</li>	
+				<li class="has-children overview">
+					<a href="personnalisation.html">Personnalisation</a>
+					<ul>
+						<li><a href="admin_salle.html">Salles / Groupes</a></li>
+						<li><a href="admin_interrupteurs.html">Interrupteurs</a></li>
+						<li><a href="admin_sources.html">Sources</a></li>
+					</ul>
+			</li>	
 				<li class="has-children overview">
 					<a href="#0">Modifications</a>
 			</li>	
 		</nav>
 <div class="content-wrapper">
 	<br>
+	<h1>Salles</h1>
 	<div class="icones_home">
-        <h2> Salles </h2>
 					<a href="salle.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
 				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
 				<br><span>Cuisine</span></a>
@@ -80,37 +80,12 @@
 			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
 				<br><span>Cuisine</span></a>
 		</div> 
+		<br>
+		<h1>Groupes</h1>
+		 <div class="icones_home">
+		<div id="liste">
 </div>
-        
-                 
-        <div class="icones_home">
-        <h2> Groupes </h2>
-					<a href="salle.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<br><span>Eclairage maison</span></a>
-			<a href="chambre.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chauffage maison<span></a>
-                
-							
-		</div> 
-                
-                </br>
-         </br>       
-                
-     <div class="icones_home">
-        <h2> Interrupteurs virtuels </h2>
-					<a href="salle.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<br><span>Télévisions</span></a>
-			<a href="chambre.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Eclairage extérieur<span></a>
-							
-		</div> 
-
-          
-
-                
-        
-                
-                
+</div>
 
 	</body>
 	<script type='text/javascript'>
@@ -123,5 +98,24 @@ doc.addPage();
 doc.text(20, 20, 'Do you like that?');
 
 doc.save('Test.pdf'); *//*PDF*/
+
+function afficher_liste(data)
+{
+
+	 document.getElementById("liste").innerHTML='<div class="icones_home">';
+	 var text1='<a href="salle.html" class="icones hvr-border-fade"><img src="images/';
+	 var text2='.svg" ><br><span>';
+	var text3='<span></a>';
+$.each(data, function (index, value) {
+  document.getElementById("liste").innerHTML+=text1+value["Icones"]+text2+value["nom"]+text3;
+});
+$('.icones').button();
+}
+
+$.post("BDD/afficher_liste.php")
+  .done(function( data ) {
+   afficher_liste(JSON.parse(data));
+  });
+
  </script> 
 </html>
