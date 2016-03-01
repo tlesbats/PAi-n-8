@@ -1,8 +1,6 @@
 <?php
 
-include_once('../classes/groupe.php');
-
-$request = $db->prepare('SELECT id, nom, etat FROM iv
+$request = $db->prepare('SELECT iv.id, iv.nom, iv.etat FROM iv
 	JOIN constitution_groupe cp ON cp.IDObjet = iv.id
 	JOIN groupe g ON g.id = cp.IDGroupe WHERE g.id = :id');
 
