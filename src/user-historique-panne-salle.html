@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="fr">
+    
+<head>
+    
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Historique des pannes </title>
+	<link rel="icon" type="image/png" href="images/favicon.png" /> <!-- le rel="icon" permet au navigateur de comprendre que c'est la favicone -->
+
+    
+    
+
+	<link href="css/icones-salles.css" rel="stylesheet">
+	<link href="css/hover.css" rel="stylesheet">
+    <link href="css/admin_historique_pannes.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tinytools.css">
+	<link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/salle.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link href="css/perso.css" rel="stylesheet">
+    
+    
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+    <script src="js/main.js"></script> <!-- Resource jQuery -->
+	<script src="js/modernizr.js"></script>
+    <script src="js/tinytools.js"></script>
+    <script src="js/graphs.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/interrupteur.js"></script>
+    
+    <style>
+	</style>
+	</head>
+<body>
+	<header class="cd-main-header">
+
+        <a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+        
+
+
+    <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+        <nav class="cd-nav">
+            
+            <ul class="cd-top-nav">
+                
+              
+                
+                <li class="has-children account">
+                    <a href="#0">
+                        <img src="images/bg.png" alt="Notifications">
+                        Compte
+                    </a>
+<ul>
+
+                        <li><a href="#0">Compte administrateur</a></li>
+                        
+                        <li><a href="#0">Se déconnecter</a></li>
+                    </ul>
+                
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- .cd-main-header -->
+    
+    
+    <main class="cd-main-content">
+        
+        
+        
+            <nav class="cd-side-nav">
+            <ul>
+                <li class="cd-label">Gestion Utilisateur</li>
+                <li class=" users">
+                    <a href="user-pilotage.html">Pilotage</a>
+                    
+                </li>
+                <li class=" bookmarks">
+                    <a href="user-consommation.html">Consommation</a>
+                </li>
+                <li class=" notifications ">
+                    <a href="user-historique-panne.html"> Alertes <span class="count">3</span> </a>
+                </li>   
+                
+                <li class="cd-label">Gestion Administrateur</li>
+        
+                <li class=" overview"><a href="admin-charges.html">Charges    </a></li>
+                <li class=" overview"><a href="admin-salle.html">Salles / Groupes</a></li>
+                <li class=" overview"><a href="admin-interrupteurs.html">Interrupteurs</a></li>
+                <li class=" overview"><a href="admin-sources.html">Sources</a></li>
+                <li class=" overview"><a href="admin-modifications.html">Modifications</a></li> 
+        </nav>
+<div class="content-wrapper">
+	<br>
+				                
+   
+    <h1 >Historique selon les salles </br></h1>
+    <div id="alertes_carousel_salles" class="owl-carousel">
+        
+        
+					<h3><a href="historique_panne.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/home.png" ></br><span>Maison</span></a></h3>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade ui-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Salon</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Salle de bain</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Couloir</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ></br><span>Chambre 1</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Chambre 2</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Garage</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Terrasse</span></a></h3></div>
+					<div><h3><a href="404.html" class="icones hvr-border-fade ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><img src="images/cooking.svg" ><br><span>Cave</span></a></h3></div>
+                </div>
+
+
+
+  </br></br></br>
+<h1> Alertes passées dans la cuisine </br> </h1>
+  <table id="hist_alerte"> 
+          
+     <tr class="ui-widget">
+        
+    <th> Charge </th>
+    <th> Salle  </th>
+    <th> Nom </th>
+    <th> Priorité</th>
+    <th> Date alerte </th>
+    <th> Date réparation</th>
+    <th> Détail </th>
+    </tr>
+    
+    <tr>
+    <td> Frigidaire </td>
+    <td> Cuisine </td>
+    <td> Court-Circuit </td>
+    <td> 1 </td>
+    <td> 12/04/2015 </td>
+        <td> 12/04/2015 </td>
+    <td> <button id="opener_1"> + </button> </td>
+    </tr>
+    
+    <tr>
+    <td> Frigidaire </td>
+    <td> Cuisine </td>
+    <td> Consommation anormale </td>
+    <td> 1 </td>
+    <td> 06/06/2015 </td>
+        <td> 12/04/2015 </td>
+    <td> <button id="opener_2"> + </button> </td>
+    </tr>
+      
+    <tr>
+    <td> Four micro-ondes </td>
+    <td> Cuisine </td>
+    <td> Allumage impossible </td>
+    <td> 2 </td>
+    <td> 11/07/2015 </td>
+        <td> 12/04/2015 </td>
+    <td> <button id="opener_3"> + </button> </td>
+    </tr>
+      
+      
+    </table>
+    
+</div>
+
+            
+<div id="dialog" title="Informations pannes">
+                    
+    
+    
+    
+<table class="ui-widget ui-widget-content table_dialog" >
+    
+<tr class="ui-widget-header "> 
+    <th> Charge </th>
+    <th> Nom </th>
+    <th> Priorité</th>
+    <th> Date alerte </th>
+    <th> ID Réparateur</th>
+    <th> Date réparation</th>
+    </tr>
+    
+    </tr>
+    
+    
+        <tr>
+    <td> Frigidaire </td>
+    <td> Court-Circuit </td>
+    <td> 1 </td>
+    <td> 12/04/2015 </td>
+            <td> 241535 R</td>
+        <td> 12/04/2015 </td>
+    </tr>
+        <tr>
+    <td colspan=6> Remarque : Le court-circuit a été causé par une humidité excessive du réfrigérateur. Cette panne est donc due à manque d'entretien. </td>
+    </tr>
+    
+    
+</table>    
+    
+</div>
+
+
+<script>  
+    
+    
+      $(".owl-carousel").owlCarousel({
+ 
+      autoPlay: 3000, //Set AutoPlay to 5 seconds
+        pagination: false,
+      items : 5,
+      itemsDesktop : [1199,2],
+      itemsDesktopSmall : [979,2]
+ 
+  });
+    
+    
+    
+  $(function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      position:
+        {my:"true"},
+        
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "blind",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener_1" ).click(function()
+ {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+    
+    
+    
+$( "#opener_1" ).button();
+    $( "#opener_2" ).button();
+    $( "#opener_3" ).button();
+    
+</script>
+            
+	</body>
+	<script type='text/javascript'>
+$('.menu_salles').slick({
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        height: 600,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
+    });
+ </script> 
+</html>

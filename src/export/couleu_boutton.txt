@@ -1,0 +1,36 @@
+Bleu standart
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default
+
+Bleu hover hover
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus
+
+Vert click
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active
+
+
+Case verte
+border: 1px solid #acdd4a;
+	background: #6eac2c url("../images/ui-bg_gloss-wave_50_6eac2c_500x100.png") 5% 5%  repeat-x;/*click*/
+	font-weight: normal;
+	color: #ffffff;
+
+Case bleu claire
+border: 1px solid #448dae;
+	background: #79c9ec url("../images/ui-bg_glass_75_79c9ec_1x400.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #026890;
+Case bleu foncé
+
+	border: 1px solid #77d5f7;
+	background:#0078ae  url("../images/ui-bg_glass_45_0078e_1x400.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #ffffff;

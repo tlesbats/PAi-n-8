@@ -2,7 +2,7 @@
 .slick-slider
 {
     position: relative;
-
+width: 50%;
   /*  display: block;*/
 
     -moz-box-sizing: border-box;
@@ -48,6 +48,7 @@
         -ms-transform: translate3d(0, 0, 0);
          -o-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
+          width: 50%;
 }
 
 .slick-track

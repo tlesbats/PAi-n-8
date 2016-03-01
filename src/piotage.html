@@ -86,19 +86,14 @@
 		</nav>
 	
 <div class="content-wrapper">
-	
-<div class="icones_home" id="pos_diag">
 	<h1>Charges :</h1><br>
-					<a  class="icones hvr-border-fade rouge"><img src="images/cooking.svg" >
-				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
-				<br><span>Frigo</span></a>
-			<a  onclick="activer_charge('jaune')" class="icones hvr-border-fade jaune" id="charge-5"><img src="images/bed.svg" >
-				<br><span>Eclairage<span></a>
-			<a  class="icones hvr-border-fade gris"><img src="images/bed.svg" >
-				<br><span>Micro-ondes<span></a>
-		<a  class="icones hvr-border-fade gris"><img src="images/cooking.svg" >
-				<br><span>Mixeur</span></a><button id="more_charges">+</button>
+	<div class="icones_home">
+	<div id="liste_charge">
+					
+			</div>
+		
 		<br><br>
+		<div class="icones_home">
 	<h1>Interrupteurs Virtuels :</h1><br>
 	<a class="icones hvr-border-fade gris" onclick="activer_interrupteur('#interrupteur-2')"  id="interrupteur-2"><img src="images/shut-down2.svg" >
 				<br><span>Eclairage<span></a>
@@ -109,36 +104,34 @@
 		<a class="icones hvr-border-fade vert" onclick="activer_interrupteur('#interrupteur-4')" id="interrupteur-4"><img src="images/shut-down2.svg"  >
 				<br><span>Prises Murales</span></a>
 		<button id="more_interrupteurs">+</button><div id="interrupteurs" style="display:inline"></div>
+	</div>
 	</div> 
 
 		<script type="text/javascript">	
-		$( "#more_charges" ).button();
+		
 
 	$( "#more_interrupteurs" ).button();
 
-$( "#more_interrupteurs" ).click(function() {
-	$("#more_interrupteurs").html("");
-		$("#interrupteurs").html('<a href="#" onclick="activer_interrupteur()" class="icones hvr-border-fade gris"><img src="images/shut-down2.svg" >	<br><span>Machine à café</span></a>	<a href="#" onclick="activer_interrupteur()" class="icones hvr-border-fade gris"><img src="images/shut-down2.svg" ><br><span>Four</span></a><a href="#" class="icones hvr-border-fade gris" onclick="activer_interrupteur()"><img src="images/shut-down2.svg" ><br><span>Four</span></a><button id="less_interrupteurs">-</button>');
-		$( "#less_interrupteurs" ).button().click(function() {
-		$("#interrupteurs").html("");
-		$("#more_interrupteurs").html('<button id="mores_interrupteurs">+</button>');
-			$("#mores_interrupteurs").button();
-	});
-	});
-function activer_charge(couleur)
-{
-$('#charge-5').toggleClass(couleur);
-
-$('#charge-5').toggleClass('gris');
+function afficher_liste_charge(data)
+{	
+	 var text1="<a onclick=\"activer_charge('#charge-";
+	 var text2="')\" class=\"icones hvr-border-fade ";
+	 var text3="\" id=\"charge-"
+	
+	var text4="\"><img src=\"images/"
+	var text5="\" ><br><span>"
+	var text6="<span></a>"
+$.each(data, function (index, value) {
+	if (index<6){
+  document.getElementById("liste_charge").innerHTML+=text1+value["id"]+"','"+value["couleur"]+text2+value["couleur"]+text3+value["id"]+text4+value["icone"]+text5+value["nom"]+text6;}
+});
+$('.icones').button();
+ document.getElementById("liste_charge").innerHTML+='<button id="more_charges">Visualiser toutes les charges</button>';
+ $( "#more_charges" ).button();
+  
 }
 
-function activer_interrupteur(id)
-{
-$(id).toggleClass('vert');
-
-$(id).toggleClass('gris');
-}
-		  $(function() {
+ $(function() {
     $( "#liste_charges" ).dialog({
       autoOpen: false,
       width:900,
@@ -157,6 +150,53 @@ $(id).toggleClass('gris');
       $( "#liste_charges" ).dialog( "open" );
     });
   });
+
+$( "#more_interrupteurs" ).click(function() {
+	$("#more_interrupteurs").html("");
+		$("#interrupteurs").html("<a onclick=\"activer_interrupteur('#interrupteur-5')\" id=\"interrupteur-5\"class=\"icones hvr-border-fade gris\"><img src=\"images/shut-down2.svg\" ><br><span>Machine à café</span></a><button id=\"less_interrupteurs\">-</button>");
+		$( "#less_interrupteurs" ).button().click(function() {
+		$("#interrupteurs").html("");
+		$("#more_interrupteurs").html('<button id="mores_interrupteurs">+</button>');
+			$("#mores_interrupteurs").button();
+	});
+	});
+function afficher_liste_interrupteur(data)
+{	
+	 var text1="<a onclick=\"activer_charge('#charge-";
+	 var text2="')\" class=\"icones hvr-border-fade ";
+	 var text3="\" id=\"charge-"
+	
+	var text4="\"><img src=\"images/"
+	var text5="\" ><br><span>"
+	var text6="<span></a>"
+$.each(data, function (index, value) {
+	if (index<6){
+  document.getElementById("liste_charge").innerHTML+=text1+value["id"]+"','"+value["couleur"]+text2+value["couleur"]+text3+value["id"]+text4+value["icone"]+text5+value["nom"]+index+text6;
+}
+else {}
+});
+$('.icones').button();
+}
+$.post("BDD/afficher_liste_charge.php", {groupe : 3})
+  .done(function( data ) {
+   afficher_liste_charge(JSON.parse(data));
+  });
+
+
+function activer_charge(id,couleur)
+{
+$(id).toggleClass(couleur);
+
+$(id).toggleClass('gris');
+}
+
+function activer_interrupteur(id)
+{
+$(id).toggleClass('vert');
+
+$(id).toggleClass('gris');
+}
+		
 		</script>
 
 		<div id="liste_charges" title="Toutes les charges">

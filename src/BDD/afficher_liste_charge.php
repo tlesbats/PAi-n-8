@@ -1,7 +1,6 @@
 <?php
 //lien BDD
-$bdd = new PDO('mysql:host=localhost;dbname=edison_ways', 'root', ''); 
-$bdd->query('SET NAMES utf8'); 
+include("connexion_BDD.php");
 //id, nom, icone, couleur, danger(1/0), consommation, nom de la source, pilotable, etat, delesté(1/0)
 $table_liste_charge =[];
 $nbcharge=0;

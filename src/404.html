@@ -1,29 +1,41 @@
 <!doctype html>
 <html lang="fr">
+    
 <head>
+    
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Edison Ways</title>
+	<title>Historique des pannes </title>
+	<link rel="icon" type="image/png" href="images/favicon.png" /> <!-- le rel="icon" permet au navigateur de comprendre que c'est la favicone -->
 
-		<link rel="icon" type="image/png" href="images/favicon.png" />
-	
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
-	<link href="css/jquery-ui.css" rel="stylesheet">
-	<link href="css/perso.css" rel="stylesheet">
+    
+    
+
+	<link href="css/icones-salles.css" rel="stylesheet">
 	<link href="css/hover.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+    <link href="css/admin_historique_pannes.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tinytools.css">
 	<link href="css/jquery-ui.css" rel="stylesheet">
-	
+    <link href="css/salle.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link href="css/perso.css" rel="stylesheet">
+    
+    
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.menu-aim.js"></script>
-	<script src="js/main.js"></script> 
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-	<script src="js/interrupteur.js"></script>
-	<script src="js/graphs.js"></script>-->
-	<script src="js/jquery-ui.js"></script>
-	
-</head>
+    <script src="js/main.js"></script> <!-- Resource jQuery -->
+	<script src="js/modernizr.js"></script>
+    <script src="js/tinytools.js"></script>
+    <script src="js/graphs.js"></script>    
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/interrupteur.js"></script>
+    
+    <style>
+	</style>
+	</head>
 <body>
 	<header class="cd-main-header">
 
@@ -31,51 +43,80 @@
 		
 
 
-		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+	<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
 
-		<nav class="cd-nav">
-			
-			<ul class="cd-top-nav">
-				
-				<li><a href="#0">Thomas le Baron</a></li>
-				
-				<li class="has-children account">
-					<a href="#0">
-						<img src="images/bg.png" alt="Notifications">
-						Compte
-					</a>
+        <nav class="cd-nav">
+            
+            <ul class="cd-top-nav">
+                
+              
+                
+                <li class="has-children account">
+                    <a href="#0">
+                        <img src="images/bg.png" alt="Notifications">
+                        Compte
+                    </a>
 <ul>
 
-						<li><a href="#0">Mon compte</a></li>
-						
-						<li><a href="#0">Se déconnecter</a></li>
-					</ul>
-				
-				</li>
-			</ul>
-		</nav>
-	</header> <!-- .cd-main-header -->
+                        <li><a href="#0">Compte administrateur</a></li>
+                        
+                        <li><a href="#0">Se déconnecter</a></li>
+                    </ul>
+                
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- .cd-main-header -->
+    
+    
 	<main class="cd-main-content">
-		<nav class="cd-side-nav">
+        
+        
+        
+	        <nav class="cd-side-nav">
 			<ul>
-				<li class="cd-label">Compte utlisateur</li>
-				<li class="has-children users">
-					<a href="#0">Pilotage</a>
+				<li class="cd-label">Gestion Utilisateur</li>
+				<li class=" users">
+					<a href="user-pilotage.html">Pilotage</a>
 					
 				</li>
-				<li class="has-children bookmarks">
-					<a href="#0">Consommation</a>
-</li>
-					<li class="has-children overview">
-					<a href="#0">Alertes</a>
-			</li>	
+				<li class=" bookmarks">
+					<a href="user-consommation.html">Consommation</a>
+                </li>
+                <li class=" notifications ">
+					<a href="user-historique-panne.html"> Alertes <span class="count">3</span> </a>
+                </li>	
+                
+                <li class="cd-label">Gestion Administrateur</li>
+		
+				<li class=" overview"><a href="admin-charges.html">Charges    </a></li>
+                <li class=" overview"><a href="admin-salle.html">Salles / Groupes</a></li>
+				<li class=" overview"><a href="admin-interrupteurs.html">Interrupteurs</a></li>
+				<li class=" overview"><a href="admin-sources.html">Sources</a></li>
+				<li class=" overview"><a href="admin-modifications.html">Modifications</a></li>	
 		</nav>
 <div class="content-wrapper">
-	<br>
-	Aucune données disponibles!
+	
+    
+    <br>
 
-	</body>
-	<script type='text/javascript'>
-
- </script> 
+    
+    <h1> Aucun contenu n'est disponible pour le moment. </h1>
+    <p> Les prochaines mises à jour completeront ce contenu.</p>
+    
+    
+    
 </html>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                

@@ -22,6 +22,7 @@
 	<script src="js/interrupteur.js"></script>
 	<script src="js/graphs.js"></script>-->
 	<script src="js/jquery-ui.js"></script>
+	<script src="js/fonctions.js"></script>
 </head>
 <body>
 	<header class="cd-main-header">
@@ -42,7 +43,7 @@
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-				<li class="cd-label">Compte administrateur</li>
+				<li class="cd-label">Utilisateur</li>
 				<li class="has-children users">
 					<a href="pilotage.html">Pilotage</a>
 					
@@ -54,6 +55,7 @@
 				<li class="has-children overview">
 					<a href="alertes.html">Alertes</a>
 			</li>	
+			<li class="cd-label">Administrateur</li>
 				<li class="has-children overview">
 					<a href="personnalisation.html">Personnalisation</a>
 					<ul>
@@ -72,7 +74,7 @@
 	<div class="icones_home">
 		<div id="liste_salle">
 
-
+	<img src="images/loader.gif">
 
 
 </div>
@@ -86,7 +88,7 @@
 		 <div class="icones_home">
 		<div id="liste_groupe">
 
-
+	<img style="position:center" src="images/loader.gif">
 </div>
 </div>
 
@@ -102,34 +104,16 @@ doc.text(20, 20, 'Do you like that?');
 
 doc.save('Test.pdf'); *//*PDF*/
 
-function afficher_liste_salle(data)
-{
-	 var text1='<a href="pilotage.html" class="icones hvr-border-fade"><img src="images/';
-	 var text2='" ><br><span>';
-	var text3='<span></a>';
-$.each(data, function (index, value) {
-  document.getElementById("liste_salle").innerHTML+=text1+value["icone"]+text2+value["nom"]+text3;
-});
-$('.icones').button();
-}
+
 
 $.post("BDD/afficher_liste_salle.php")
   .done(function( data ) {
    afficher_liste_salle(JSON.parse(data));
   });
 
-  function afficher_liste_groupe(data)
-{
-	 var text1='<a href="groupe.html" class="icones hvr-border-fade"><img src="images/';
-	 var text2='" ><br><span>';
-	var text3='<span></a>';
-$.each(data, function (index, value) {
-  document.getElementById("liste_groupe").innerHTML+=text1+value["icone"]+text2+value["nom"]+text3;
-});
-$('.icones').button();
-}
+ 
 
-$.post("BDD/afficher_liste_groupe.php",{ salle : 5})
+$.post("BDD/afficher_liste_groupe.php",{ salle : 1})
   .done(function( data ) {
    afficher_liste_groupe(JSON.parse(data));
   });

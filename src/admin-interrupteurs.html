@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+	
+		<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edison Ways</title>
+<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+		<link rel="icon" type="image/png" href="images/favicon.png" />
+	
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">
+	<link href="css/hover.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link href="css/perso.css" rel="stylesheet">
+	<link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/consommation.css" rel="stylesheet">
+    <link href="css/admin_interrupteur.css" rel="stylesheet">
+	
+
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+	<script src="js/main.js"></script> 
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	<script src="js/interrupteur.js"></script>
+	<script src="js/graphs.js"></script>-->
+	<script src="js/jquery-ui.js"></script>
+<script src="js/owl.carousel.js"></script>
+
+		<link href="icones-salles.css" rel="stylesheet">
+    </head>
+        
+        
+<body>
+        
+	<header class="cd-main-header">
+
+		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+		
+
+
+	<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+        <nav class="cd-nav">
+            
+            <ul class="cd-top-nav">
+                
+              
+                
+                <li class="has-children account">
+                    <a href="#0">
+                        <img src="images/bg.png" alt="Notifications">
+                        Compte
+                    </a>
+<ul>
+
+                        <li><a href="#0">Compte administrateur</a></li>
+                        
+                        <li><a href="#0">Se déconnecter</a></li>
+                    </ul>
+                
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- .cd-main-header -->
+    
+    
+	<main class="cd-main-content">
+        
+        
+        
+	        <nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Gestion Utilisateur</li>
+				<li class=" users">
+					<a href="user-pilotage.html">Pilotage</a>
+					
+				</li>
+				<li class=" bookmarks">
+					<a href="user-consommation.html">Consommation</a>
+                </li>
+                <li class=" notifications ">
+					<a href="user-historique-panne.html"> Alertes <span class="count">3</span> </a>
+                </li>	
+                
+                <li class="cd-label">Gestion Administrateur</li>
+		
+				<li class=" overview"><a href="admin-charges.html">Charges    </a></li>
+                <li class=" overview"><a href="admin-salle.html">Salles / Groupes</a></li>
+				<li class=" overview"><a href="admin-interrupteurs.html">Interrupteurs</a></li>
+				<li class=" overview"><a href="admin-sources.html">Sources</a></li>
+				<li class=" overview"><a href="admin-modifications.html">Modifications</a></li>	
+		</nav>
+
+<div class="content-wrapper">
+    
+    
+
+    
+    <div class="caroussel">
+    <div class="caroussel_fixe">
+		<a href="../" class="icones hvr-border-fade"><img src="images/house34.svg" ><br><span>Home</span></a>      ....
+	</div>
+    
+    
+    <div class="caroussel_mobile"> 
+        
+    
+    <div id="owl-example" class="owl-carousel icones_carousel">
+					<h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Salle à manger</span></a></h3>
+				
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Salon</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Salle de bain</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Couloir</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Chambre 1</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Chambre 2</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Garage</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Terrasse</span></a></h3></div>
+					<div><h3><a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" ><br><span>Cave</span></a></h3></div>
+				</div>
+    
+    </div>    
+    
+    </div>
+    
+    
+    
+    <div id="interrupteurs_liste" >
+    <h2> Liste des interrupteurs virtuels communs à toute la maison</h2>
+        </br>
+    
+    
+        <button id="button_int_1" class=" interrupteur_int icones hvr-border-fade"> <img src="images/bed.svg"> </br> Nom du bouton </button>
+        
+        <button id="button_int_2" class=" interrupteur_int icones hvr-border-fade"> <img src="images/bed.svg"> </br> Nom du bouton </button>
+        
+        <button id="button_int_3" class=" interrupteur_int icones hvr-border-fade"> <img src="images/bed.svg"> </br> Nom du bouton </button>
+        
+        <button id="button_int_4" class=" interrupteur_int icones hvr-border-fade"> <img src="images/bed.svg"> </br> Nom du bouton </button>
+        
+        <button id="button_int_5" class=" interrupteur_int icones hvr-border-fade"> <img src="images/bed.svg"> </br> Nom du bouton </button>
+        
+        <button id="button_int_6" class=" interrupteur_int icones hvr-border-fade"> <img src="images/bed.svg"> </br> Nom du bouton </button>
+        
+
+        
+        <div id="dialog_1" title="Modification des interrupteurs">
+
+<div clas="partie_diag_1">
+            
+    <table class="table_int_charges" id="liste_charges_fixe" >
+    
+    <thead class="ui-widget-header ">
+        <td> Nom de la charge </td>
+        <td> Salle </td>
+    </thead>
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>    
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>
+    
+    </table>
+     
+    <table class="table_int_charges" id="liste_charges_modif" >
+    
+    <thead class="ui-widget-header ">
+        <td> Nom de la charge </td>
+        <td> Salle </td>
+    </thead>
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>    
+    <tr>
+        <td> Frigo </td>
+        <td> Cuisine </td>
+    </tr>
+     <tr>
+        <td> 
+        <select id="selectmenu_charges">
+	<option>Frigo</option>
+	<option>Microonde</option>
+	<option selected="selected">Lumière</option>
+	<option>Grille-Pain</option>
+	<option>Four</option>
+            </select> 
+         </td>
+        <td> 
+            <select id="selectmenu_salles">
+	<option>Cusine</option>
+	<option>Salon</option>
+	<option selected="selected">Entrée</option>
+	<option>Cave</option>
+	<option>Chambre</option>
+            </select> 
+         </td>
+    </tr>
+    
+    </table>
+    
+    
+</div>
+            
+            
+<div class="partie_diag_2">
+            
+            <button id="button_suppr_liste ui-state-default ui-corner-all" > Supprimer Interrupteur </button>
+        <button id="button_modif_liste ui-state-default ui-corner-all" > Modifier Interrupteur </button>
+            
+            </div>            
+</div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ <script type='text/javascript'>
+     
+$( "#selectmenu_charges" ).selectmenu();
+$( "#selectmenu_salles" ).selectmenu();
+
+$("#liste_charges_modif").hide();
+     
+     
+ $(".icones").button();
+
+    $("#owl-example").owlCarousel({
+ 
+      autoPlay: 5000, //Set AutoPlay to 5 seconds
+ pagination: false,
+      items : 4,
+      itemsDesktop : [1199,2],
+      itemsDesktopSmall : [979,2]
+ 
+  });
+
+     
+$("#button_int_1").click(function() {
+$("#dialog_1").dialog("open");
+    
+})
+
+$( "#dialog_1" ).dialog({
+	autoOpen: false,
+    position: {
+        my:"true"},
+    width: 750,
+	buttons: [
+		{
+			text: "Ok",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		},
+		{
+			text: "Cancel",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	]
+});
+
+ </script>
+    
+            
+        </nav>
+        </main>
+
+    </body>
+</html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

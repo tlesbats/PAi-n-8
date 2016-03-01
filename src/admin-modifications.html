@@ -5,24 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Edison Ways</title>
 
-		<link rel="icon" type="image/png" href="images/favicon.png" />
+	<link rel="icon" type="image/png" href="images/favicon.png" />
 	
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
 	<link href="css/jquery-ui.css" rel="stylesheet">
-	<link href="css/perso.css" rel="stylesheet">
+
 	<link href="css/hover.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<link href="css/jquery-ui.css" rel="stylesheet">
-	
+		<link href="css/perso.css" rel="stylesheet">
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.menu-aim.js"></script>
 	<script src="js/main.js"></script> 
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
 	<script src="js/interrupteur.js"></script>
-	<script src="js/graphs.js"></script>-->
+	<script src="js/graphs.js"></script>
 	<script src="js/jquery-ui.js"></script>
-</head>
+	<script src="js/datepicker_fr.js"></script>
+ <style>
+	
+	</style>
+	</head>
 <body>
 	<header class="cd-main-header">
 
@@ -82,56 +86,28 @@
 				<li class=" overview"><a href="admin-sources.html">Sources</a></li>
 				<li class=" overview"><a href="admin-modifications.html">Modifications</a></li>	
 		</nav>
+	
 <div class="content-wrapper">
-	<br>
-	<h1>Salles</h1>
-	<div class="icones_home">
-					<a href="salle.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
-				<br><span>Cuisine</span></a>
-			<a href="chambre.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chambre 2<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chambre 3<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<br><span>Cuisine</span></a>
-		</div> 
-		<br>
-		<h1>Groupes</h1>
-		 <div class="icones_home">
-		<div id="liste">
-</div>
-</div>
+	
+  <h1>Options administrateur :</h1>
 
-	</body>
-	<script type='text/javascript'>
-$('.icones').button();
-	/*
-var doc = new jsPDF();
-doc.text(20, 20, 'Hello world!');
-doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-doc.addPage();
-doc.text(20, 20, 'Do you like that?');
-
-doc.save('Test.pdf'); *//*PDF*/
-
-function afficher_liste(data)
+Conversion Consommation - Prix : <div id="taux" style="display:inline">1MégaWatt = 25,65€</div><form><input type="text"><input type="submit" value"Modifier"></form>
+<script>
+function afficher_taux(data)
 {
-
-	 document.getElementById("liste").innerHTML='<div class="icones_home">';
-	 var text1='<a href="salle.html" class="icones hvr-border-fade"><img src="images/';
-	 var text2='.svg" ><br><span>';
-	var text3='<span></a>';
-$.each(data, function (index, value) {
-  document.getElementById("liste").innerHTML+=text1+value["Icones"]+text2+value["nom"]+text3;
-});
-$('.icones').button();
+  $.each(data, function (index, value) {
+    document.getElementById("liste_charge").innerHTML="25";
+  });
 }
 
-$.post("BDD/afficher_liste.php")
+$.post("BDD/afficher_prevision.php")
   .done(function( data ) {
-   afficher_liste(JSON.parse(data));
+   afficher_taux(JSON.parse(data));
   });
+  
 
- </script> 
+</script>
+
+
+</div>
 </html>

@@ -42,56 +42,66 @@
 <body>
 	<header class="cd-main-header">
 
-		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
-		
+    <a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
+    
 
 
-		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+  <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
 
-		<nav class="cd-nav">
-			
-			<ul class="cd-top-nav"style="text-align:center;">
-			
-				<li class="has-children account">
-					<a href="#0" class="cd-nav-trigger">
-						
-						
-					</a>
+        <nav class="cd-nav">
+            
+            <ul class="cd-top-nav">
+                
+              
+                
+                <li class="has-children account">
+                    <a href="#0">
+                        <img src="images/bg.png" alt="Notifications">
+                        Compte
+                    </a>
 <ul>
 
-						<li><a id="acces" >Accéder au compte administrateur</a></li>
-
-							bkjbk<label for="identity">Identifiant</label><br /><input type ="text" name="user" id="identity" class="input-perso" style="width:70%;margin-left:15%;"/><br /><br/>
-							<label for="mdp">Mot de passe</label><br /><input type="password" name="mdp" id="mdp" style="width:70%;margin-left:15%;"/><br/><br/>
-							<input type="submit" value="Valider" id="valider" />
-							
-						
-						<li><a href="#0">Se déconnecter</a></li>
-					</ul>
-				
-				</li>
-			</ul>
-		</nav>
-	</header> <!-- .cd-main-header -->
-	<main class="cd-main-content">
-		<nav class="cd-side-nav">
-			<ul>
-				<li class="cd-label">Compte utlisateur</li>
-				<li class="has-children users">
-					<a href="#0">Pilotage</a>
-					
-				</li>
-				<li class="has-children bookmarks">
-					<a href="#0">Consommation</a>
-</li>
-					<li class="has-children overview">
-					<a href="#0">Alertes</a>
-			</li>	
-		</nav>
+                        <li><a href="#0">Compte administrateur</a></li>
+                        
+                        <li><a href="#0">Se déconnecter</a></li>
+                    </ul>
+                
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- .cd-main-header -->
+    
+    
+  <main class="cd-main-content">
+        
+        
+        
+          <nav class="cd-side-nav">
+      <ul>
+        <li class="cd-label">Gestion Utilisateur</li>
+        <li class=" users">
+          <a href="user-pilotage.html">Pilotage</a>
+          
+        </li>
+        <li class=" bookmarks">
+          <a href="user-consommation.html">Consommation</a>
+                </li>
+                <li class=" notifications ">
+          <a href="user-historique-panne.html"> Alertes <span class="count">3</span> </a>
+                </li> 
+                
+                <li class="cd-label">Gestion Administrateur</li>
+    
+        <li class=" overview"><a href="admin-charges.html">Charges    </a></li>
+                <li class=" overview"><a href="admin-salle.html">Salles / Groupes</a></li>
+        <li class=" overview"><a href="admin-interrupteurs.html">Interrupteurs</a></li>
+        <li class=" overview"><a href="admin-sources.html">Sources</a></li>
+        <li class=" overview"><a href="admin-modifications.html">Modifications</a></li> 
+    </nav>
 	
 <div class="content-wrapper">
 	<h1>Charges :</h1><br>
-	<div class="icones_home">
+	<div class="icones_home" id="position">
 	<div id="liste_charge">
 					<img src="images/loader.gif">
 			</div>
@@ -100,7 +110,7 @@
 		<div class="icones_home">
 	<h1>Interrupteurs Virtuels :</h1><br>
 <div id="liste_interrupteur">
-    <img src="images/loader.gif">
+    <img style="margin-left:10%;"  src="images/loader.gif">
 </div>
 
 
@@ -125,25 +135,7 @@ $( "#valider" ).button();
 
 
 
- $(function() {
-    $( "#liste_charges" ).dialog({
-      autoOpen: false,
-      width:500,
-      
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "clip",
-        duration: 1000
-      }
-    });
-
-    $( "#more_charges" ).click(function() {
-      $( "#liste_charges" ).dialog( "open" );
-    });
-  });
+ 
 
 $( "#more_interrupteurs" ).click(function() {
 	$("#more_interrupteurs").html("");
@@ -156,25 +148,47 @@ $( "#more_interrupteurs" ).click(function() {
 	});
 
 
-
-$.post("BDD/afficher_liste_charge.php", {groupe : 3})
+var salle = get_url("salle");
+$.post("BDD/afficher_liste_charge.php", {groupe : salle})
   .done(function( data ) {
    afficher_liste_charge(JSON.parse(data));
+   afficher_detail_charge(JSON.parse(data));
   });
 
-  $.post("BDD/afficher_liste_interrupteur.php", {groupe : 3})
+  $.post("BDD/afficher_liste_interrupteur.php", {groupe : salle})
   .done(function( data ) {
    afficher_liste_interrupteur(JSON.parse(data));
   });
 
 
-		
+		  $(function() {
+    $( "#liste_charges" ).dialog({
+      autoOpen: false,
+       position: {
+        my:"center"
+      },
+      width:650,
+      
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "clip",
+        duration: 1000
+      }
+    });
+
+    
+  });
+
+
 		</script>
 
 		<div id="liste_charges" title="Toutes les charges">
   <div id="tab_charges" class="ui-widget">
   
-  <table id="charges" class="ui-widget ui-widget-content">
+  <table id="charges" class="ui-widget ui-widget-content table_dialog">
     <thead>
       <tr class="ui-widget-header ">
         <th>Charge</th>
@@ -185,21 +199,16 @@ $.post("BDD/afficher_liste_charge.php", {groupe : 3})
       </tr>
     </thead>
     <tbody>
+      <!--
       <tr>
-        <td>Eclairage</td>
-        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>Frigidaire</td>
+        <td><input type="checkbox"  checked  disabled class="interrupteur Disabled"/></td>
         <td>30 kWh</td>
-      <td>EDF</td>
-      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      <td>Soleil</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg"> </button></td>
       </tr>
-       <tr>
-        <td><p>Frigo</p></td>
-        <td><input type="checkbox" class="interrupteur"/></td>
-        <td>0 kWh</td>
-      <td>EDF</td> 
-      <td> <button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button> </td>   <!-- si on garde id alors on a le bon design, avec class ça marche pas -->
-      </tr>
-        <tr class=prog>
+        
+         <tr class=prog>
             <td colspan=4 > 
                 <div class=prog_day> 
                 <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
@@ -233,9 +242,9 @@ $.post("BDD/afficher_liste_charge.php", {groupe : 3})
         <button class="button_change_prog" class="ui-state-default ui-corner-all"> <img class="icon_gear_prog" src="images/gear.svg" </button>        
         </td>
         </tr>
-        <tr class="prog">
-            <td colspan="4" > 
-            <div class="prog_day"> 
+        <tr class=prog>
+            <td colspan=4 > 
+            <div class=prog_day> 
                 <button class="ui-state-default ui-corner-all"> <p> Lu </p> </button> 
                 <button class="ui-state-default ui-corner-all"> <p> Ma </p> </button> 
                 <button class="ui-state-default ui-corner-all"> <p> Me </p> </button> 
@@ -253,12 +262,57 @@ $.post("BDD/afficher_liste_charge.php", {groupe : 3})
         <tr class=prog>
             <td colspan=5 > 
    <button class="button_ajouter_prog" class="ui-state-default ui-corner-all"> <p> Ajouter réveil</p> </button> 
+                  <button class="prog_fermer" class="ui-state-default ui-corner-all"> <p> OK</p> </button> 
             </td>
         </tr>
         
         
+       <tr>
+        <td><p>Four</p></td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>0 kWh</td>
+      <td>Soleil</td> 
+      <td> <button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button> </td><!-- si on garde id alors on a le bon design, avec class ça marche pas -->
+   <!--   </tr>
+        <tr>
+        <td>Machine à laver</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>EDF</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      </tr>
         
+        <tr>
+        <td>Grille Pain</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>Soleil</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      </tr>
+        <tr>
+        <td>Lave vaisselle</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>Soleil</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      </tr>
+        <tr>
+        <td>Congélateur</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>EDF</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      </tr>
+        <tr>
+        <td>Lumière plan</td>
+        <td><input type="checkbox" class="interrupteur"/></td>
+        <td>30 kWh</td>
+      <td>Soleil</td>
+      <td><button class="button_prog" class="ui-state-default ui-corner-all"> <img class="icon_clock" src="images/clock.svg" </button></td>
+      </tr>
         
+       -->
+       
         
     </tbody>
   </table>
@@ -302,6 +356,7 @@ $( "#datepickerend" ).datepicker( "option", "minDate", $( "#datepicker" ).val() 
  });
 
  	$(".interrupteur").toggleSwitch();
+ 
 $("#datepicker").off( "select" );
 </script>
 

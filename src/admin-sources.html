@@ -10,10 +10,11 @@
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" type="text/css" href="css/interrupteur.css">
 	<link href="css/jquery-ui.css" rel="stylesheet">
-	<link href="css/perso.css" rel="stylesheet">
+	
 	<link href="css/hover.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<link href="css/jquery-ui.css" rel="stylesheet">
+	<link href="css/perso.css" rel="stylesheet">
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.menu-aim.js"></script>
@@ -25,6 +26,8 @@
 </head>
 <body>
 	<header class="cd-main-header">
+
+		<header class="cd-main-header">
 
 		<a href="http://www.edisonways.com" target="blank" class="cd-logo"><img src="images/ew.png" alt="Edison Ways" style="height:60px; margin-top:-25px;"></a> 
 		
@@ -82,56 +85,61 @@
 				<li class=" overview"><a href="admin-sources.html">Sources</a></li>
 				<li class=" overview"><a href="admin-modifications.html">Modifications</a></li>	
 		</nav>
-<div class="content-wrapper">
-	<br>
-	<h1>Salles</h1>
-	<div class="icones_home">
-					<a href="salle.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<img src="images/danger.png" style="position: absolute;top:-30px;right:-10px;height:40px;">
-				<br><span>Cuisine</span></a>
-			<a href="chambre.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chambre 2<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/bed.svg" >
-				<br><span>Chambre 3<span></a>
-			<a href="cuisine.html" class="icones hvr-border-fade"><img src="images/cooking.svg" >
-				<br><span>Cuisine</span></a>
-		</div> 
-		<br>
-		<h1>Groupes</h1>
-		 <div class="icones_home">
-		<div id="liste">
-</div>
-</div>
+<div class="content-wrapper"><br>
+	<div class="icones_home" id="pos_diag">
+	<a  class="icones hvr-border-fade jaune"><img src="images/solar10.svg" >
+				<br><span>Photovoltaïque<span></a>
+			<a  class="icones hvr-border-fade bleu_clair"><img src="images/power47.svg" >
+				<br><span>Réseau EDF<span></a>
+		<a class="icones hvr-border-fade vert"><img src="images/mill3.svg" >
+				<br><span>Eolienne</span></a>
 
-	</body>
-	<script type='text/javascript'>
-$('.icones').button();
-	/*
-var doc = new jsPDF();
-doc.text(20, 20, 'Hello world!');
-doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-doc.addPage();
-doc.text(20, 20, 'Do you like that?');
 
-doc.save('Test.pdf'); *//*PDF*/
 
-function afficher_liste(data)
-{
+				<script type="text/javascript">
+	$(function() {
+    $( "#source" ).dialog({
+      autoOpen: false,
+      width:500,
+       position: { my: "center top+50%", at: "center bottom", of: "#pos_diag" },
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "clip",
+        duration: 1000
+      }
+    });
 
-	 document.getElementById("liste").innerHTML='<div class="icones_home">';
-	 var text1='<a href="salle.html" class="icones hvr-border-fade"><img src="images/';
-	 var text2='.svg" ><br><span>';
-	var text3='<span></a>';
-$.each(data, function (index, value) {
-  document.getElementById("liste").innerHTML+=text1+value["Icones"]+text2+value["nom"]+text3;
-});
-$('.icones').button();
-}
-
-$.post("BDD/afficher_liste.php")
-  .done(function( data ) {
-   afficher_liste(JSON.parse(data));
+    $( ".icones" ).click(function() {
+      $( "#source" ).dialog( "open" );
+    });
   });
+		</script>
 
- </script> 
-</html>
+		<div id="source" title="Modifier l'affichage de la source">
+			<label for="name_source">Nom de la source : </label><input type="text" id="name_source" value="Réseau EDF"></input>
+			<br>
+			<br>
+			<label for="color">Couleur de la source : </label>
+<select id="color" >
+	<option>Vert</option>
+      <option>Jaune</option>
+      <option selected="selected">Bleu</option>
+      <option>Rose</option>
+      <option>Orange</option>
+</select>
+<br><br>
+<button id="modif">Modifier</button>
+
+
+
+			</div>
+		<script type="text/javascript">
+$( "#color" ).selectmenu();
+/* Ajouter visualisation de la couleur*/
+
+$("#modif").button();
+
+		</script>
