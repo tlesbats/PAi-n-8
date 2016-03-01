@@ -2,9 +2,11 @@
 
 include_once('../classes/groupe.php');
 
-$request = $db->prepare('SELECT id, nom, etat FROM groupe WHERE nom=:nom');
+$request = $db->prepare('SELECT id, nom, etat FROM iv
+	JOIN constitution_groupe cp ON cp.IDObjet = iv.id
+	JOIN groupe g ON g.id = cp.IDGroupe WHERE g.id = :id');
 
-$request->bindParam(':nom', $_POST['salle'], PDO::PARAM_STR);
+$request->bindParam(':id', $_POST['salle'], PDO::PARAM_STR);
 $request->execute();
 $request->closeCursor();
 
