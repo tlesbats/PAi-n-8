@@ -8,7 +8,6 @@ $request = $db->prepare('SELECT id, nom, etat FROM iv
 
 $request->bindParam(':id', $_POST['salle'], PDO::PARAM_STR);
 $request->execute();
-$request->closeCursor();
 
-echo json_encode($request->fetch());
+echo json_encode($request->fetchAll());
 ?>
