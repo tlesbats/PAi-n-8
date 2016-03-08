@@ -1,14 +1,15 @@
 <?php
 
-$request = $bd->query('SELECT etat, pilotable FROM charge WHERE id = ' . $_POST['id']);
-$donnee = $request->fetch();
-$request->closeCursor();
-$resultat['resultat'] = 0;
+$request = $bd->query('SELECT c.id, c.etatCommande, c.pilotable FROM charge c
+	JOIN pilotage_iv_charge pic ON pic.C_IDObjet = c.id WHERE pic.id = ' . $_POST['id']);
 
-if ($donnee['pilotable'])
+$ids = [];
+while ($donnee = $request->fetch())
 {
-	$request = $bd->query('UPDATE charge SET etat = ' . (1 - $donnee['etat']) . ' WHERE id = ' . $_POST['id']);
-	$resultat = 1;
+	if ($donnee['pilotable'])
+	{
+		$request = $bd->query('UPDATE charge SET etatCommande = ' . (1 - $donnee['etatCommande']) . ' WHERE id = ' . $donnee['id']);
+		$ids[] = $donnee['id'];
+	}
 }
-
-echo json_encode($resultat);
+echo json_encode($ids);
