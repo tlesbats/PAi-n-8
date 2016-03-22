@@ -2,7 +2,10 @@
 
 $request = $bd->query('SELECT pilotable FROM iv WHERE id = ' . $_POST['id']);
 $donnee = $request->fetch();
-$etatIv = $donnee['pilotable'];
+$nouvelEtatIv = 1 - $donnee['etat'];
+$request->closeCursor();
+
+$request = $bd->query('UPDATE iv SET etat = ' . $nouvelEtatIv . ' WHERE id = ' . $_POST['id']);
 $request->closeCursor();
 
 $request = $bd->query('SELECT c.id, c.pilotable FROM charge c
@@ -13,7 +16,7 @@ while ($donnee = $request->fetch())
 {
 	if ($donnee['pilotable'])
 	{
-		$request = $bd->query('UPDATE charge SET etatCommande = ' . $etatIv . ' WHERE id = ' . $donnee['id']);
+		$request = $bd->query('UPDATE charge SET etatCommande = ' . $nouvelEtatIv . ' WHERE id = ' . $donnee['id']);
 		$ids[] = $donnee['id'];
 	}
 }
