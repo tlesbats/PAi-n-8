@@ -14,5 +14,6 @@ $createdSource['id'] = $bdd->lastInsertId();
 
 $request = $bdd->prepare('INSERT INTO source VALUES(:id, :couleur)');
 $request->execute($createdSource);
+$request->closeCursor();
 
 echo json_encode($createdSource);
