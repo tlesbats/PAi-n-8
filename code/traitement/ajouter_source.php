@@ -1,20 +1,18 @@
 <?php
 
-$request = $db->prepare('INSERT INTO source VALUES(:nom, :icone, :couleur)');
-
-$request->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
-$request->bindParam(':icone', $_POST['icone'], PDO::PARAM_STR);
-$request->bindParam(':couleur', $_POST['couleur'], PDO::PARAM_STR);
-
-$request->execute();
-
-$id = $db->lastInsertId();
-
-$createdSource = {
+$createdSource = array(
 	'nom' 	=> $_POST['nom'],
 	'icone' => $_POST['icone'],
 	'couleur' => $_POST['couleur'],
-	'id' => $id
-};
+);
+
+$request = $bdd->prepare('INSERT INTO objet VALUES(:nom, :icone)');
+$request->exec($createdSource);
+$request->closeCursor();
+
+$createdSource['id'] = $bdd->lastInsertId();
+
+$request = $bdd->prepare('INSERT INTO source VALUES(:id, :couleur)');
+$request->execute($createdSource);
 
 echo json_encode($createdSource);
