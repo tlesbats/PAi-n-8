@@ -1,22 +1,23 @@
 <?php
 
-$request = $bd->query('SELECT pilotable FROM iv WHERE id = ' . $_POST['id']);
+$request = $bdd->query('SELECT etat FROM iv WHERE id = ' . $_POST['id']);
 $donnee = $request->fetch();
 $nouvelEtatIv = 1 - $donnee['etat'];
 $request->closeCursor();
 
-$request = $bd->query('UPDATE iv SET etat = ' . $nouvelEtatIv . ' WHERE id = ' . $_POST['id']);
+$request = $bdd->query('UPDATE iv SET etat = ' . $nouvelEtatIv . ' WHERE id = ' . $_POST['id']);
 $request->closeCursor();
 
-$request = $bd->query('SELECT c.id, c.pilotable FROM charge c
-	JOIN pilotage_iv_charge pic ON pic.C_IDObjet = c.id WHERE pic.id = ' . $_POST['id']);
+$request = $bdd->query('SELECT c.id, c.pilotable FROM charge c
+	JOIN constitution_groupe cp ON cp.IDObjet = c.id
+	JOIN pilotage_iv_charge pic ON pic.IDGroupe_Affichage = cp.IDGroupe WHERE pic.id = ' . $_POST['id']);
 
 $ids = [];
 while ($donnee = $request->fetch())
 {
 	if ($donnee['pilotable'])
 	{
-		$request = $bd->query('UPDATE charge SET etatCommande = ' . $nouvelEtatIv . ' WHERE id = ' . $donnee['id']);
+		$request = $bdd->query('UPDATE charge SET etatCommande = ' . $nouvelEtatIv . ' WHERE id = ' . $donnee['id']);
 		$ids[] = $donnee['id'];
 	}
 }
